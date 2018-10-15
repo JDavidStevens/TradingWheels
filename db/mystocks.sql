@@ -1,2 +1,2 @@
 select * from owned_stock
-where id = $1;
+where user_id = 1;

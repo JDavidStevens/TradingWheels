@@ -4,7 +4,7 @@ class Nonowned extends Component {
   render() {
     return (
       <div className="Nonowned">
-        
+        Nonowned
       </div>
     );
   }

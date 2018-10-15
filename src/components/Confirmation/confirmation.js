@@ -4,7 +4,7 @@ class Confirmation extends Component {
   render() {
     return (
       <div className="Confirmation">
-        
+        Confirmation
       </div>
     );
   }

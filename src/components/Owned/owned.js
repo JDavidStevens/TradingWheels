@@ -4,7 +4,7 @@ class Owned extends Component {
   render() {
     return (
       <div className="Owned">
-        
+        Owned
       </div>
     );
   }

@@ -2,8 +2,11 @@ module.exports = {
     allstocks: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.allstocks([req.session.user.id])
-            .then(stocks => {
+        dbInstance.allstocks()
+        
+            .then(stocks => 
+                {
+                console.log("stocks:",stocks);
                 res.status(200).send(stocks)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
@@ -14,7 +17,7 @@ module.exports = {
     myStocks: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.myStocks([req.session.user.id])
+        dbInstance.myStocks()
             .then(stocks => {
                 res.status(200).send(stocks)
             }).catch(err => {
@@ -26,7 +29,7 @@ module.exports = {
     nonowned: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.nonowned([req.session.user.id])
+        dbInstance.nonowned()
             .then(stocks => {
                 res.status(200).send(stocks)
             }).catch(err => {
