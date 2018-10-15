@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class App extends Component {
+class Owned extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Owned">
         
       </div>
     );
   }
 }
 
-export default App;
+export default Owned;
