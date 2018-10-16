@@ -38,6 +38,18 @@ module.exports = {
             })
     },
 
+    nonOwnedSymbols: (req,res)=>{
+        const dbInstance = req.app.get('db');
+
+        dbInstance.nonOwnedSymbols()
+        .then(stocks=>{
+            res.status(200).send(stocks).catch(err => {
+                res.status(500).send({ errorMessage: "Oops! Something went wrong." });
+                console.log(err);
+            })
+        })
+    },
+
     purchase: (req, res) => {
         const dbInstance = req.app.get('db');
         const { stock_name, symbol, shares, purchase_price } = req.body;

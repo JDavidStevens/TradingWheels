@@ -24,6 +24,7 @@ massive(CONNECTION_STRING).then(dbInstance=>{
 app.get('/api/allstocks', stockCtrl.allstocks)
 app.get('/api/mystocks', stockCtrl.myStocks)
 app.get('/api/nonowned', stockCtrl.nonowned)
+app.get('/api/nonowned/symbols', stockCtrl.nonOwnedSymbols)
 
 app.post('/api/purchase', stockCtrl.purchase)
 app.post('/api/add', stockCtrl.addNonowned)
