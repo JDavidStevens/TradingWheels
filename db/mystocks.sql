@@ -1,2 +1,4 @@
-select * from owned_stock
-where user_id = 1;
+select o.stock_name,o.symbol,o.shares,o.purchase_price,i.firstName
+from owned_stock o
+join investors i 
+on o.user_id=i.id;

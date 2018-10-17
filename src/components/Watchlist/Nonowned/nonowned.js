@@ -5,8 +5,10 @@ export function NonOwned(props) {
 
   console.log("props",props);
 
-const fullStockList = props.nonOwnedStocks.map((element, index) => {
-      
+const nonOwnedStockList = props.nonOwnedStocks.map((element, index) => {
+      if(props.quote==={}){
+        return null
+      }else{
       return (
         <tr key={index}>
           <td>{element.stock_name}</td>
@@ -16,7 +18,7 @@ const fullStockList = props.nonOwnedStocks.map((element, index) => {
           {props.quotes[element.symbol].quote.change>=0?
           <td className="positive">{props.quotes[element.symbol].quote.change}</td>:<td className="negative">{props.quotes[element.symbol].quote.change}</td>}
         </tr>
-      )
+      )}
     })
 
     return (
@@ -30,7 +32,7 @@ const fullStockList = props.nonOwnedStocks.map((element, index) => {
               <th>Previous Close</th>
               <th>Change</th>
             </tr>
-            {fullStockList}
+            {nonOwnedStockList}
            
           </tbody>
         </table>

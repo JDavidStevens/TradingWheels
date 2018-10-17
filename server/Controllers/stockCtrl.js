@@ -1,23 +1,8 @@
 module.exports = {
-    allstocks: (req, res) => {
-        const dbInstance = req.app.get('db');
-
-        dbInstance.allstocks()
-        
-            .then(stocks => 
-                {
-                console.log("stocks:",stocks);
-                res.status(200).send(stocks)
-            }).catch(err => {
-                res.status(500).send({ errorMessage: "Oops! Something went wrong." });
-                console.log(err);
-            })
-    },
-
     myStocks: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.myStocks()
+        dbInstance.mystocks()
             .then(stocks => {
                 res.status(200).send(stocks)
             }).catch(err => {
@@ -38,16 +23,16 @@ module.exports = {
             })
     },
 
-    nonOwnedSymbols: (req,res)=>{
+    nonOwnedSymbols: (req, res) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.nonOwnedSymbols()
-        .then(stocks=>{
-            res.status(200).send(stocks).catch(err => {
-                res.status(500).send({ errorMessage: "Oops! Something went wrong." });
-                console.log(err);
+            .then(stocks => {
+                res.status(200).send(stocks).catch(err => {
+                    res.status(500).send({ errorMessage: "Oops! Something went wrong." });
+                    console.log(err);
+                })
             })
-        })
     },
 
     purchase: (req, res) => {

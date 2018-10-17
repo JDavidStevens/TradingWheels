@@ -5,7 +5,7 @@ const initialState = {
     nonOwnedStocks: [],
     nonOwnedSymbols: [],
     quotes: {},
-    tab: 'non-owned'
+    tab: 'owned'
 }
 
 //////Action Types/////

@@ -21,7 +21,6 @@ massive(CONNECTION_STRING).then(dbInstance=>{
 })
 
 //stock endpoints
-app.get('/api/allstocks', stockCtrl.allstocks)
 app.get('/api/mystocks', stockCtrl.myStocks)
 app.get('/api/nonowned', stockCtrl.nonowned)
 app.get('/api/nonowned/symbols', stockCtrl.nonOwnedSymbols)
