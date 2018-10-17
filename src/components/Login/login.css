@@ -1,0 +1,12 @@
+.positive{
+    color: greenyellow;
+}
+
+.negative{
+    color: red;
+}
+
+.login-link{
+    text-decoration: none;
+    color: black;
+}

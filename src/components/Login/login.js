@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+import './login.css';
+
 
 class Login extends Component {
 
@@ -23,14 +26,13 @@ class Login extends Component {
     console.log("SPY",this.state.index)
     return (
       <div className="Login">
-      <div>
-        Login
-      </div>
+      
       <div>
       <h2>S&P 500</h2>{this.state.sp>=0?<p className="positive">{this.state.sp}</p>:<p className="negative">{this.state.sp}</p>}
       <h2>NASDAQ</h2>{this.state.nasdaq>=0?<p className="positive">{this.state.nasdaq}</p>:<p className="negative">{this.state.nasdaq}</p>}
       <h2>DOW</h2>{this.state.dow>=0?<p className="positive">{this.state.dow}</p>:<p className="negative">{this.state.dow}</p>}
       </div>
+      <button><Link to='/list' className="login-link">Login/Register</Link></button>
       </div>
     );
   }
