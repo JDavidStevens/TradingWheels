@@ -1,3 +1,3 @@
 update owned_stock 
 set shares = $2
-where id=$1; 
+where user_id=1; 

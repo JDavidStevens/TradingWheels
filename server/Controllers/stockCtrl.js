@@ -62,7 +62,7 @@ module.exports = {
 
     shares: (req, res) => {
         const dbInstance = req.app.get('db');
-        const { id, shares } = req.body;
+        const { shares } = req.body;
         dbInstance.partial([id, shares])
             .then(() => {
                 res.sendStatus(200)
@@ -83,9 +83,9 @@ module.exports = {
             })
     },
 
-    sell: (req, res) => {
+    sellAll: (req, res) => {
         const dbInstance = req.app.get('db');
-        dbInstance.sell([req.body.id])
+        dbInstance.sellAll([req.body.symbol])
             .then(() => {
                 res.sendStatus(200)
             }).catch(err => {

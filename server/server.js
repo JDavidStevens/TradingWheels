@@ -31,7 +31,7 @@ app.post('/api/add', stockCtrl.addNonowned)
 app.put('/api/shares', stockCtrl.shares)
 
 app.delete('/api/remove', stockCtrl.remove)
-app.delete('/api/sell', stockCtrl.sell)
+app.delete('/api/sellall', stockCtrl.sellAll)
 
 //auth endpoints
 

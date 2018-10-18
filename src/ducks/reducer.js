@@ -7,7 +7,10 @@ const initialState = {
     quotes: {},
     tab: 'owned',
     addCompany:'',
-    addSymbol:''
+    addSymbol:'',
+    buySell:'',
+    tradeQty:'',
+    orderType:''
 }
 
 
@@ -22,6 +25,9 @@ const UPDATE_TAB = "UPDATE_TAB";
 const UPDATE_ADD_COMPANY="UPDATE_ADD_COMPANY";
 const UPDATE_ADD_SYMBOL="UPDATE_ADD_SYMBOL";
 const UPDATE_HANDLE_ADD_TO_WATCHLIST="UPDATE_HANDLE_ADD_TO_WATCHLIST";
+const UPDATE_BUY_SELL="UPDATE_BUY_SELL";
+const UPDATE_ORDER_TYPE="UPDATE_ORDER_TYPE";
+const UPDATE_TRADE_QTY="UPDATE_TRADE_QTY";
 
 /////Switch/////
 function reducer(state = initialState, action) {
@@ -50,6 +56,12 @@ function reducer(state = initialState, action) {
                 addCompany:'',
                 addSymbol:''
             }
+        case UPDATE_BUY_SELL:
+            return Object.assign({},state,{buySell: action.payload})
+        case UPDATE_TRADE_QTY:
+            return Object.assign({},state,{tradeQty: action.payload})
+        case UPDATE_ORDER_TYPE:
+            return Object.assign({},state,{orderType: action.payload})
         default:
             return state;
     }
@@ -109,6 +121,24 @@ export function updateAddSymbol(addSymbol) {
     return {
         type: UPDATE_ADD_SYMBOL,
         payload: addSymbol
+    }
+}
+export function updateBuySell(buySell) {
+    return {
+        type: UPDATE_BUY_SELL,
+        payload: buySell
+    }
+}
+export function updateTradeQty(tradeQty) {
+    return {
+        type: UPDATE_TRADE_QTY,
+        payload: tradeQty
+    }
+}
+export function updateOrderType(orderType) {
+    return {
+        type: UPDATE_ORDER_TYPE,
+        payload: orderType
     }
 }
 export function updateHandleAddToWatchlist(){

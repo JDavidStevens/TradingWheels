@@ -1,0 +1,10 @@
+{
+    "restartable": "rs",
+    "ignore":["src/"],
+    "watch": [
+      "server/",
+      "db/"
+    ],
+    
+    "ext": "js json sql"
+  }

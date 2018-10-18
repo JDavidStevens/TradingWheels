@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab } from '../../../ducks/reducer';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
-import Trade from '../../Trade/trade';
+import Trade from '../Trade/trade';
 
 class NonOwned extends Component {
   constructor() {
