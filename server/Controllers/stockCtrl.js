@@ -49,10 +49,11 @@ module.exports = {
 
     addNonowned: (req, res) => {
         const dbInstance = req.app.get('db');
-        const { stock_name, symbol } = req.body;
-        dbInstance.purchase([req.session.user.id, stock_name, symbol])
-            .then(stocks => {
-                res.status(200).send(stocks)
+        const { addCompany, addSymbol } = req.body;
+        dbInstance.addNonowned([addCompany, addSymbol])
+        // console.log("add", req.body.addCompany)
+            .then(()=> {
+                res.sendStatus(200)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);

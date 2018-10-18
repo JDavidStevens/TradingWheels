@@ -12,7 +12,8 @@ class Login extends Component {
       sp:'',
       dow:'',
       nasdaq:'',
-      symbols:['spy','oneq','dia']
+      symbols:['spy','oneq','dia'],
+      company:[]
     }
   }
 
@@ -20,9 +21,10 @@ class Login extends Component {
     axios.get(`https://api.iextrading.com/1.0/stock/market/batch?symbols=${this.state.symbols}&types=quote`).then(response=>{
     console.log("response",response.data)
     this.setState({ sp: response.data.SPY.quote.changePercent,dow:response.data.DIA.quote.changePercent,nasdaq:response.data.ONEQ.quote.changePercent})})
-  }
+   }
 
   render() {
+    console.log("company",this.state.company)
     console.log("SPY",this.state.index)
     return (
       <div className="Login">

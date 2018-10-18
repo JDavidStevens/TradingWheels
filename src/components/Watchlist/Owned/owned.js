@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 
 export function Owned(props) {
 
-  console.log("props",props);
-
 const myStockList = props.myStocks.map((element, index) => {
       let avgPrice = element.purchase_price/element.shares;
       let avgSharePrice= avgPrice.toFixed(2);
