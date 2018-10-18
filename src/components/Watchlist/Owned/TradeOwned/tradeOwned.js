@@ -19,14 +19,24 @@ class TradeOwned extends Component {
             })
     }
 
-    handleTradeShares(symbol,qty){
-        axios.put(`/api/shares`,{symbol,qty})
-        .then(() => {
-            this.props.history.push('/confirmation')
-        })
+    handleTradeShares(id,qty,price){
+        axios.put(`/api/shares`,{id,qty,price})
+        // .then(() => {
+        //     this.props.history.push('/confirmation')
+        // })
     }
 
     render() {
+
+        let sum = parseInt(this.props.tradeQty)+parseInt(this.props.currentTrade.shares);
+        console.log("sum",sum)
+        let product = parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice)+parseInt(this.props.currentTrade.purchase_price);
+        console.log("product",product)
+
+        let difference=parseInt(this.props.currentTrade.shares)-parseInt(this.props.tradeQty);
+        let reduced=parseInt(this.props.currentTrade.purchase_price)-parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice);
+
+        console.log("currentTrade",this.props.currentTrade)
         return (
             <div className="Trade">
                 <h1>{this.props.currentTrade.symbol}</h1>
@@ -42,7 +52,7 @@ class TradeOwned extends Component {
                     <br />
                     Quantity:
                         {this.props.buySell === "Sell All Shares " ? (<input value={this.props.currentTrade.shares} />) : (
-                        <input type="text" onChange={e => this.props.updateTradeQty(e.target.value)} />
+                        <input onChange={e => this.props.updateTradeQty(e.target.value)} />
                     )}
                     Order Type:
                     <select onChange={e => this.props.updateOrderType(e.target.value)}>
@@ -53,8 +63,8 @@ class TradeOwned extends Component {
                     <br /><br />
                     {this.props.orderType === "" ? (null) : (this.props.orderType === "trigger")
                         ? (<input placeholder="Desired Target Price" />) : (this.props.orderType === "Sell All Shares ")
-                            ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.symbol)} />) : (this.props.orderType === "Buy " || this.props.orderType === "Sell ")
-                                ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.symbol,this.props.tradeQty)} />) : (null)}
+                            ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.symbol)} />) : (this.props.orderType === "Buy ")
+                                ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,product)} />) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,product)} />)}
 
                 </form>
             </div>

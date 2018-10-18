@@ -7,7 +7,7 @@ import Watchlist from './components/Watchlist/watchlist';
 // import Nonowned from './components/Nonowned/nonowned';
 // import Trade from './components/Trade/trade';
 import Preview from './components/Preview/preview';
-import Confirmation from './components/Watchlist/Confirmation';
+import Confirmation from './components/Watchlist/Confirmation/confirmation';
 // import Navbar from './components/Navbar/navbar';
 
 

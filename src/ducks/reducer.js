@@ -9,7 +9,7 @@ const initialState = {
     addCompany:'',
     addSymbol:'',
     buySell:'',
-    tradeQty:'',
+    tradeQty: 0,
     orderType:''
 }
 

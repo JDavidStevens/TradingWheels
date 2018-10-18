@@ -1,3 +1,3 @@
 update owned_stock 
-set shares = $2
-where user_id=1; 
+set shares = $2, purchase_price =$3
+where id=$1; 

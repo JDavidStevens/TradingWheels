@@ -6,7 +6,7 @@ import TradeOwned from './TradeOwned/tradeOwned';
 
 class Owned extends Component {
   render() {
-
+console.log("props",this.props.myStocks)
     const myStockList = this.props.myStocks.map((element, index) => {
       let avgPrice = element.purchase_price / element.shares;
       let avgSharePrice = avgPrice.toFixed(2);
@@ -31,8 +31,8 @@ class Owned extends Component {
             {capital >= 0 ?
               <td className="positive">{capital}</td> : <td className="negative">{capital}</td>}
             <td>{currentTotal}</td>
-            <td><Popup trigger={<button>Buy More/Sell</button>} position="right">
-              <TradeOwned currentTrade={element} />
+            <td><Popup trigger={<button>Buy More/Sell</button>}>
+              <TradeOwned currentTrade={element} currentPrice={this.props.myQuotes[element.symbol].quote.latestPrice}/>
             </Popup></td>
           </tr>
         </tbody>

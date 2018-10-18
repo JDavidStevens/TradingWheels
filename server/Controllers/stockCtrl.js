@@ -62,8 +62,9 @@ module.exports = {
 
     shares: (req, res) => {
         const dbInstance = req.app.get('db');
-        const { shares } = req.body;
-        dbInstance.partial([id, shares])
+        const { id,qty,price } = req.body;
+        dbInstance.partial([id,qty,price])
+        // console.log("addShares",id,qty,price)
             .then(() => {
                 res.sendStatus(200)
             }).catch(err => {
