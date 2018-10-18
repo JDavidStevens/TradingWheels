@@ -8,14 +8,14 @@ import Watchlist from './components/Watchlist/watchlist';
 import Trade from './components/Trade/trade';
 import Preview from './components/Preview/preview';
 import Confirmation from './components/Confirmation/confirmation';
-import Navbar from './components/Navbar/navbar';
+// import Navbar from './components/Navbar/navbar';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <Navbar/>
+      {/* <Navbar/> */}
         <HashRouter>
           <Switch>
             <Route exact path='/' component={Login} />

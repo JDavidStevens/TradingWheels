@@ -9,30 +9,44 @@ class Login extends Component {
   constructor(){
     super()
     this.state={
-      sp:'',
-      dow:'',
-      nasdaq:'',
+      spy:0,
+      dia:0,
+      oneq:0,
       symbols:['spy','oneq','dia'],
       company:[]
     }
   }
 
+  
  componentDidMount(){
     axios.get(`https://api.iextrading.com/1.0/stock/market/batch?symbols=${this.state.symbols}&types=quote`).then(response=>{
     console.log("response",response.data)
-    this.setState({ sp: response.data.SPY.quote.changePercent,dow:response.data.DIA.quote.changePercent,nasdaq:response.data.ONEQ.quote.changePercent})})
+    this.setState({ spy: response.data.SPY.quote.changePercent,dia:response.data.DIA.quote.changePercent,oneq:response.data.ONEQ.quote.changePercent})})
    }
 
   render() {
-    console.log("company",this.state.company)
-    console.log("SPY",this.state.index)
+    // let percent= this.state.spy * 100;
+    // let sp = percent.toFixed(2)
+    // let percent= this.state.spy * 100;
+    // let sp = percent.toFixed(2)
+    // let percent= this.state.spy * 100;
+    // let sp = percent.toFixed(2)
+
+    function percent(num){
+    var multiplier = num * 100;
+    var quote= multiplier.toFixed(2)
+      return quote;
+    
+  }
+
     return (
+      
       <div className="Login">
       
       <div>
-      <h2>S&P 500</h2>{this.state.sp>=0?<p className="positive">{this.state.sp}</p>:<p className="negative">{this.state.sp}</p>}
-      <h2>NASDAQ</h2>{this.state.nasdaq>=0?<p className="positive">{this.state.nasdaq}</p>:<p className="negative">{this.state.nasdaq}</p>}
-      <h2>DOW</h2>{this.state.dow>=0?<p className="positive">{this.state.dow}</p>:<p className="negative">{this.state.dow}</p>}
+      <h2>S&P 500</h2>{percent(this.state.spy)>=0?<p className="positive">{percent(this.state.spy)}%</p>:<p className="negative">{percent(this.state.spy)}%</p>}
+      <h2>NASDAQ</h2>{percent(this.state.oneq)>=0?<p className="positive">{percent(this.state.oneq)}%</p>:<p className="negative">{percent(this.state.oneq)}%</p>}
+      <h2>DOW</h2>{percent(this.state.dia)>=0?<p className="positive">{percent(this.state.dia)}%</p>:<p className="negative">{percent(this.state.dia)}%</p>} 
       </div>
       <button><Link to='/list' className="login-link">Login/Register</Link></button>
       </div>

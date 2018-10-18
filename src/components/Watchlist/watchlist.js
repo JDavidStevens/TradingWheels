@@ -4,6 +4,8 @@ import { updateMyStocks, updateMySymbols, updateMyQuotes, updateNonOwnedStocks, 
 import axios from 'axios';
 import NonOwned from './Nonowned/nonowned';
 import Owned from './Owned/owned';
+import Navbar from '../Navbar/navbar';
+
 import './watchlist.css';
 
 
@@ -38,8 +40,9 @@ class Watchlist extends Component {
 
     return (
       <div className="Watchlist">
+      <div><Navbar/></div>
 
-        {/* {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''} */}
+        {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
 
         <h1>Watchlist</h1>
 
@@ -50,7 +53,6 @@ class Watchlist extends Component {
         <div>
           {(this.props.tab === "owned") ? (<Owned/>) : (<NonOwned/>)}
         </div>
-
       </div>
     );
   }

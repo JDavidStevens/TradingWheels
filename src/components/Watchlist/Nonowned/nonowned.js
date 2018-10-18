@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab } from '../../../ducks/reducer';
 import axios from 'axios';
+import Popup from 'reactjs-popup';
+import Trade from '../../Trade/trade';
 
 class NonOwned extends Component {
   constructor() {
@@ -28,14 +30,19 @@ class NonOwned extends Component {
         return null
       } else {
         return (
-          <tr key={index}>
+          <tbody key={index}>
+          <tr >
             <td>{element.stock_name}</td>
             <td>{element.symbol}</td>
             <td>{this.props.quotes[element.symbol].quote.latestPrice}</td>
             <td>{this.props.quotes[element.symbol].quote.previousClose}</td>
             {this.props.quotes[element.symbol].quote.change >= 0 ?
               <td className="positive">{this.props.quotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.quotes[element.symbol].quote.change}</td>}
+              <td><Popup trigger={<button>Buy</button>} position="right">
+            <Trade />
+          </Popup></td>
           </tr>
+          </tbody>
         )
       }
     })
@@ -43,7 +50,7 @@ class NonOwned extends Component {
     return (
       <div className="Watchlist">
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Name</th>
               <th>Symbol</th>
@@ -51,9 +58,9 @@ class NonOwned extends Component {
               <th>Previous Close</th>
               <th>Change</th>
             </tr>
+          </thead>
             {nonOwnedStockList}
 
-          </tbody>
         </table>
         <form>
           Add a company to your watchlist: <br />
