@@ -12,10 +12,10 @@ class Owned extends Component {
       let avgPrice = element.purchase_price / element.shares;
       let avgSharePrice = avgPrice.toFixed(2);
 
-      let gainLoss = avgSharePrice - this.props.myQuotes[element.symbol].quote.latestPrice;
+      let gainLoss = avgSharePrice - this.props.quotes[element.symbol].quote.latestPrice;
       let capital = gainLoss.toFixed(2);
 
-      let total = element.shares * this.props.myQuotes[element.symbol].quote.latestPrice;
+      let total = element.shares * this.props.quotes[element.symbol].quote.latestPrice;
       let currentTotal = total.toFixed(2);
       return (
 
@@ -23,17 +23,17 @@ class Owned extends Component {
           <tr >
             <td>{element.stock_name}</td>
             <td>{element.symbol}</td>
-            <td>{this.props.myQuotes[element.symbol].quote.latestPrice}</td>
-            <td>{this.props.myQuotes[element.symbol].quote.previousClose}</td>
-            {this.props.myQuotes[element.symbol].quote.change >= 0 ?
-              <td className="positive">{this.props.myQuotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.myQuotes[element.symbol].quote.change}</td>}
+            <td>{this.props.quotes[element.symbol].quote.latestPrice}</td>
+            <td>{this.props.quotes[element.symbol].quote.previousClose}</td>
+            {this.props.quotes[element.symbol].quote.change >= 0 ?
+              <td className="positive">{this.props.quotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.quotes[element.symbol].quote.change}</td>}
             <td>{element.shares}</td>
             <td>{avgSharePrice}</td>
             {capital >= 0 ?
               <td className="positive">{capital}</td> : <td className="negative">{capital}</td>}
             <td>{currentTotal}</td>
             <td><Popup trigger={<button>Buy More/Sell</button>}>
-              <TradeOwned currentTrade={element} currentPrice={this.props.myQuotes[element.symbol].quote.latestPrice}/>
+              <TradeOwned currentTrade={element} currentPrice={this.props.quotes[element.symbol].quote.latestPrice}/>
             </Popup></td>
           </tr>
         </tbody>
@@ -69,9 +69,9 @@ class Owned extends Component {
 }
 
 function mapStateToProps(state) {
-  const { myQuotes, myStocks } = state;
+  const { quotes, myStocks } = state;
   return {
-    myQuotes,
+    quotes,
     myStocks
   }
 }

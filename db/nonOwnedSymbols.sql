@@ -1,1 +1,0 @@
-select symbol from nonowned_stock; 

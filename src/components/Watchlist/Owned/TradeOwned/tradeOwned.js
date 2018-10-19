@@ -13,15 +13,16 @@ class TradeOwned extends Component {
         this.handleTradeShares = this.handleTradeShares.bind(this);
     }
 
-    handleSellAll(symbol) {
-        axios.delete(`/api/sellall${symbol}`)
-            .then(() => {
-                this.props.history.push('/confirmation')
-            })
+    handleSellAll(id) {
+        axios.delete(`/api/sellall/${id}`)
+        console.log("id",id)
+    //         .then(() => {
+    //             this.props.history.push('/confirmation')
+    //         })
     }
 
     handleTradeShares(id,qty,price){
-        axios.put(`/api/shares`,{id,qty,price})
+        axios.put(`/api/shares/${id}`,{qty,price})
         // .then(() => {
         //     this.props.history.push('/confirmation')
         // })
@@ -64,7 +65,7 @@ class TradeOwned extends Component {
                     <br /><br />
                     {this.props.orderType === "" ? (null) : (this.props.orderType === "trigger")
                         ? (<LimitStopOwned currentTrade={this.props.currentTrade} currentPrice={this.props.currentPrice}/>) : (this.props.orderType === "Sell All Shares ")
-                            ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.symbol)} />) : (this.props.orderType === "Buy ")
+                            ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.id)} />) : (this.props.orderType === "Buy ")
                                 ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)} />) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)} />)}
 
                 </form>

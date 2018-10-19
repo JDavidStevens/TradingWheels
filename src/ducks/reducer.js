@@ -1,50 +1,47 @@
 const initialState = {
     myStocks: [],
-    mySymbols: [],
     myQuotes: {},
     nonOwnedStocks: [],
-    nonOwnedSymbols: [],
+    pending: [],
     quotes: {},
     tab: 'owned',
-    addCompany:'',
-    addSymbol:'',
-    buySell:'',
+    addCompany: '',
+    addSymbol: '',
+    buySell: '',
     tradeQty: 0,
-    orderType:'',
-    targetPrice: 0
+    orderType: '',
+    targetPrice: 0,
+    pendingQuantity: 0,
+    pendingTrigger: 0
 }
 
 
 //////Action Types/////
 const UPDATE_MY_STOCKS = "UPDATE_MY_STOCKS";
-const UPDATE_MY_SYMBOLS = "UPDATE_MY_SYMBOLS";
-const UPDATE_MY_QUOTES = "UPDATE_MY_QUOTES";
-const UPDATE_NONOWNEDSTOCKS = "UPDATE_ALLSTOCKS";
-const UPDATE_NONOWNEDSYMBOLS = "UPDATE_NONOWNEDSYMBOLS";
+const UPDATE_NONOWNEDSTOCKS = "UPDATE_NONOWNEDSTOCKS";
+const UPDATE_PENDING = "UPDATE_PENDING";
 const UPDATE_QUOTES = "UPDATE_QUOTES";
 const UPDATE_TAB = "UPDATE_TAB";
-const UPDATE_ADD_COMPANY="UPDATE_ADD_COMPANY";
-const UPDATE_ADD_SYMBOL="UPDATE_ADD_SYMBOL";
-const UPDATE_HANDLE_ADD_TO_WATCHLIST="UPDATE_HANDLE_ADD_TO_WATCHLIST";
-const UPDATE_BUY_SELL="UPDATE_BUY_SELL";
-const UPDATE_ORDER_TYPE="UPDATE_ORDER_TYPE";
-const UPDATE_TARGET_PRICE="UPDATE_TARGET_PRICE";
-const UPDATE_TRADE_QTY="UPDATE_TRADE_QTY";
+const UPDATE_ADD_COMPANY = "UPDATE_ADD_COMPANY";
+const UPDATE_ADD_SYMBOL = "UPDATE_ADD_SYMBOL";
+const UPDATE_HANDLE_ADD_TO_WATCHLIST = "UPDATE_HANDLE_ADD_TO_WATCHLIST";
+const UPDATE_BUY_SELL = "UPDATE_BUY_SELL";
+const UPDATE_ORDER_TYPE = "UPDATE_ORDER_TYPE";
+const UPDATE_TARGET_PRICE = "UPDATE_TARGET_PRICE";
+const UPDATE_TRADE_QTY = "UPDATE_TRADE_QTY";
+const UPDATE_PENDING_QUANTITY = "UPDATE_PENDING_QUANTITY";
+const UPDATE_PENDING_TRIGGER = "UPDATE_PENDING_TRIGGER";
 
 /////Switch/////
 function reducer(state = initialState, action) {
     switch (action.type) {
-        
+
         case UPDATE_MY_STOCKS:
             return Object.assign({}, state, { myStocks: action.payload });
-        case UPDATE_MY_SYMBOLS:
-            return Object.assign({}, state, { mySymbols: action.payload });
-        case UPDATE_MY_QUOTES:
-            return Object.assign({}, state, { myQuotes: action.payload });
         case UPDATE_NONOWNEDSTOCKS:
             return Object.assign({}, state, { nonOwnedStocks: action.payload });
-        case UPDATE_NONOWNEDSYMBOLS:
-            return Object.assign({}, state, { nonOwnedSymbols: action.payload })
+        case UPDATE_PENDING:
+            return Object.assign({}, state, { pending: action.payload });
         case UPDATE_QUOTES:
             return Object.assign({}, state, { quotes: action.payload })
         case UPDATE_TAB:
@@ -55,17 +52,21 @@ function reducer(state = initialState, action) {
             return Object.assign({}, state, { addSymbol: action.payload })
         case UPDATE_HANDLE_ADD_TO_WATCHLIST:
             return {
-                addCompany:'',
-                addSymbol:''
+                addCompany: '',
+                addSymbol: ''
             }
         case UPDATE_BUY_SELL:
-            return Object.assign({},state,{buySell: action.payload})
+            return Object.assign({}, state, { buySell: action.payload })
         case UPDATE_TRADE_QTY:
-            return Object.assign({},state,{tradeQty: action.payload})
+            return Object.assign({}, state, { tradeQty: action.payload })
         case UPDATE_ORDER_TYPE:
-            return Object.assign({},state,{orderType: action.payload})
+            return Object.assign({}, state, { orderType: action.payload })
         case UPDATE_TARGET_PRICE:
-            return Object.assign({},state,{targetPrice: action.payload})
+            return Object.assign({}, state, { targetPrice: action.payload })
+        case UPDATE_PENDING_QUANTITY:
+            return Object.assign({}, state, { pendingQuantity: action.payload })
+        case UPDATE_PENDING_TRIGGER:
+            return Object.assign({}, state, { pendingTrigger: action.payload })
         default:
             return state;
     }
@@ -79,28 +80,16 @@ export function updateMyStocks(myStocks) {
         payload: myStocks
     }
 }
-export function updateMySymbols(mySymbols) {
-    return {
-        type: UPDATE_MY_SYMBOLS,
-        payload: mySymbols
-    }
-}
-export function updateMyQuotes(myQuotes) {
-    return {
-        type: UPDATE_MY_QUOTES,
-        payload: myQuotes
-    }
-}
 export function updateNonOwnedStocks(nonOwnedStocks) {
     return {
         type: UPDATE_NONOWNEDSTOCKS,
         payload: nonOwnedStocks
     }
 }
-export function updateNonOwnedSymbols(nonOwnedSymbols) {
+export function updatePending(pending) {
     return {
-        type: UPDATE_NONOWNEDSYMBOLS,
-        payload: nonOwnedSymbols
+        type: UPDATE_PENDING,
+        payload: pending
     }
 }
 export function updateQuotes(quotes) {
@@ -145,15 +134,27 @@ export function updateOrderType(orderType) {
         payload: orderType
     }
 }
-export function updateHandleAddToWatchlist(){
-    return{
+export function updateHandleAddToWatchlist() {
+    return {
         type: UPDATE_HANDLE_ADD_TO_WATCHLIST
     }
 }
-export function updateTargetPrice(targetPrice){
-    return{
+export function updateTargetPrice(targetPrice) {
+    return {
         type: UPDATE_TARGET_PRICE,
         payload: targetPrice
+    }
+}
+export function updatePendingQuantity(pendingQuantity){
+    return{
+        type: UPDATE_PENDING_QUANTITY,
+        payload: pendingQuantity
+    }
+}
+export function updatePendingTrigger(pendingTrigger){
+    return{
+        type: UPDATE_PENDING_TRIGGER,
+        payload: pendingTrigger
     }
 }
 

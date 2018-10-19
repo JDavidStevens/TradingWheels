@@ -23,19 +23,20 @@ module.exports = {
             })
     },
 
-    nonOwnedSymbols: (req, res) => {
+    pending: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.nonOwnedSymbols()
+        dbInstance.pending()
             .then(stocks => {
-                res.status(200).send(stocks).catch(err => {
-                    res.status(500).send({ errorMessage: "Oops! Something went wrong." });
-                    console.log(err);
-                })
+                res.status(200).send(stocks)
+                console.log("getPending",stocks)
+            }).catch(err => {
+                res.status(500).send({ errorMessage: "Oops! Something went wrong." });
+                console.log(err);
             })
-    },
+        },
 
-    purchase: (req, res) => {
+    newPurchase: (req, res) => {
         const dbInstance = req.app.get('db');
         const { stock_name, symbol, shares, purchase_price } = req.body;
         dbInstance.purchase([req.session.user.id, stock_name, symbol, shares, purchase_price])
@@ -62,8 +63,8 @@ module.exports = {
 
     shares: (req, res) => {
         const dbInstance = req.app.get('db');
-        const { id,qty,price } = req.body;
-        dbInstance.partial([id,qty,price])
+        const { qty,price } = req.body;
+        dbInstance.partial([req.body.id,qty,price])
         // console.log("addShares",id,qty,price)
             .then(() => {
                 res.sendStatus(200)
@@ -86,7 +87,7 @@ module.exports = {
 
     sellAll: (req, res) => {
         const dbInstance = req.app.get('db');
-        dbInstance.sellAll([req.body.symbol])
+        dbInstance.sellAll([req.params.id])
             .then(() => {
                 res.sendStatus(200)
             }).catch(err => {
@@ -105,6 +106,17 @@ module.exports = {
         }).catch(err=>{
             res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);
+        })
+    },
+
+    cancelOrder: (req,res)=>{
+        const dbInstance=req.app.get('db');
+        dbInstance.cancelOrder([req.params.id])
+        .then(() => {
+            res.sendStatus(200)
+        }).catch(err => {
+            res.status(500).send({ errorMessage: "Oops! Something went wrong." });
+            console.log(err);
         })
     }
 }

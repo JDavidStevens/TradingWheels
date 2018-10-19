@@ -23,16 +23,17 @@ massive(CONNECTION_STRING).then(dbInstance=>{
 //stock endpoints
 app.get('/api/mystocks', stockCtrl.myStocks)
 app.get('/api/nonowned', stockCtrl.nonowned)
-app.get('/api/nonowned/symbols', stockCtrl.nonOwnedSymbols)
+app.get('/api/pending', stockCtrl.pending)
 
-app.post('/api/purchase', stockCtrl.purchase)
+app.post('/api/newpurchase', stockCtrl.newPurchase)
 app.post('/api/add', stockCtrl.addNonowned)
 app.post('/api/orders',stockCtrl.addPending)
 
-app.put('/api/shares', stockCtrl.shares)
+app.put('/api/shares/:id', stockCtrl.shares)
 
-app.delete('/api/remove', stockCtrl.remove)
-app.delete('/api/sellall', stockCtrl.sellAll)
+app.delete('/api/remove/:id', stockCtrl.remove)
+app.delete('/api/sellall/:id', stockCtrl.sellAll)
+app.delete('/api/cancel/:id',stockCtrl.cancelOrder)
 
 //auth endpoints
 

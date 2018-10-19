@@ -24,11 +24,8 @@ class NonOwned extends Component {
 
   render() {
 
-    console.log('props', this.props)
     const nonOwnedStockList = this.props.nonOwnedStocks.map((element, index) => {
-      if (this.props.quote === {}) {
-        return null
-      } else {
+      
         return (
           <tbody key={index}>
           <tr >
@@ -44,11 +41,18 @@ class NonOwned extends Component {
           </tr>
           </tbody>
         )
-      }
+      
     })
 
     return (
       <div className="Watchlist">
+      <form>
+          Add a company to your watchlist: <br />
+          <input type="text" placeholder="Company Name" onChange={e => this.props.updateAddCompany(e.target.value)} />
+          <input type="text" placeholder="Trade Symbol" onChange={e => this.props.updateAddSymbol(e.target.value)} />
+          <input type="submit" onClick={this.handleAddToWatchlist} />
+
+        </form>
         <table>
           <thead>
             <tr>
@@ -62,13 +66,7 @@ class NonOwned extends Component {
             {nonOwnedStockList}
 
         </table>
-        <form>
-          Add a company to your watchlist: <br />
-          <input type="text" placeholder="Company Name" onChange={e => this.props.updateAddCompany(e.target.value)} />
-          <input type="text" placeholder="Trade Symbol" onChange={e => this.props.updateAddSymbol(e.target.value)} />
-          <input type="submit" onClick={this.handleAddToWatchlist} />
-
-        </form>
+        
       </div>
     );
   }
