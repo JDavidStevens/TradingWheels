@@ -4,6 +4,7 @@ import { updateMyStocks, updateMySymbols, updateMyQuotes, updateNonOwnedStocks, 
 import axios from 'axios';
 import NonOwned from './Nonowned/nonowned';
 import Owned from './Owned/owned';
+import Pending from './Pending/pending';
 import Navbar from '../Navbar/navbar';
 
 import './watchlist.css';
@@ -49,9 +50,10 @@ class Watchlist extends Component {
         <div>
           <button onClick={() => this.props.updateTab('owned')}>Owned</button>
           <button onClick={() => this.props.updateTab('non-owned')}>Non-Owned</button>
+          <button onClick={() => this.props.updateTab('pending')}>Pending Orders</button>
         </div>
         <div>
-          {(this.props.tab === "owned") ? (<Owned/>) : (<NonOwned/>)}
+          {(this.props.tab === "owned") ? (<Owned/>) : (this.props.tab==="non-owned")?(<NonOwned/>):(<Pending/>)}
         </div>
       </div>
     );

@@ -4,9 +4,10 @@ import Popup from 'reactjs-popup';
 import TradeOwned from './TradeOwned/tradeOwned';
 
 
+
 class Owned extends Component {
   render() {
-console.log("props",this.props.myStocks)
+
     const myStockList = this.props.myStocks.map((element, index) => {
       let avgPrice = element.purchase_price / element.shares;
       let avgSharePrice = avgPrice.toFixed(2);

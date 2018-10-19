@@ -93,5 +93,18 @@ module.exports = {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);
             })
+    },
+
+    addPending: (req,res)=>{
+        const dbInstance= req.app.get('db');
+        const {company,symbol,qty,triggerPrice,type,tradeType}=req.body;
+        console.log("req.body",req.body)
+        dbInstance.addPending([company,symbol,qty,triggerPrice,type,tradeType])
+        .then(()=>{
+            res.sendStatus(200)
+        }).catch(err=>{
+            res.status(500).send({ errorMessage: "Oops! Something went wrong." });
+                console.log(err);
+        })
     }
 }

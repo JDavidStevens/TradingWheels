@@ -3,6 +3,7 @@ import axios from 'axios';
 // import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks } from '../../../../ducks/reducer';
+import LimitStopOwned from './limitStopOwned';
 
 
 class TradeOwned extends Component {
@@ -30,11 +31,11 @@ class TradeOwned extends Component {
 
         let sum = parseInt(this.props.tradeQty)+parseInt(this.props.currentTrade.shares);
         console.log("sum",sum)
-        let product = parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice)+parseInt(this.props.currentTrade.purchase_price);
-        console.log("product",product)
+        let addShares = parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice)+parseInt(this.props.currentTrade.purchase_price);
+        
 
         let difference=parseInt(this.props.currentTrade.shares)-parseInt(this.props.tradeQty);
-        let reduced=parseInt(this.props.currentTrade.purchase_price)-parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice);
+        let reduceShares=parseInt(this.props.currentTrade.purchase_price)-parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice);
 
         console.log("currentTrade",this.props.currentTrade)
         return (
@@ -51,8 +52,8 @@ class TradeOwned extends Component {
                     </select>
                     <br />
                     Quantity:
-                        {this.props.buySell === "Sell All Shares " ? (<input value={this.props.currentTrade.shares} />) : (
-                        <input onChange={e => this.props.updateTradeQty(e.target.value)} />
+                        {this.props.buySell === "Sell All Shares " ? (<h5>{this.props.currentTrade.shares} Shares</h5>) : (
+                        <input placeholder="Shares" onChange={e => this.props.updateTradeQty(e.target.value)} />
                     )}
                     Order Type:
                     <select onChange={e => this.props.updateOrderType(e.target.value)}>
@@ -62,9 +63,9 @@ class TradeOwned extends Component {
                     </select>
                     <br /><br />
                     {this.props.orderType === "" ? (null) : (this.props.orderType === "trigger")
-                        ? (<input placeholder="Desired Target Price" />) : (this.props.orderType === "Sell All Shares ")
+                        ? (<LimitStopOwned currentTrade={this.props.currentTrade} currentPrice={this.props.currentPrice}/>) : (this.props.orderType === "Sell All Shares ")
                             ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.symbol)} />) : (this.props.orderType === "Buy ")
-                                ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,product)} />) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,product)} />)}
+                                ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)} />) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)} />)}
 
                 </form>
             </div>

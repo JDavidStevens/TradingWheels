@@ -10,7 +10,8 @@ const initialState = {
     addSymbol:'',
     buySell:'',
     tradeQty: 0,
-    orderType:''
+    orderType:'',
+    targetPrice: 0
 }
 
 
@@ -27,6 +28,7 @@ const UPDATE_ADD_SYMBOL="UPDATE_ADD_SYMBOL";
 const UPDATE_HANDLE_ADD_TO_WATCHLIST="UPDATE_HANDLE_ADD_TO_WATCHLIST";
 const UPDATE_BUY_SELL="UPDATE_BUY_SELL";
 const UPDATE_ORDER_TYPE="UPDATE_ORDER_TYPE";
+const UPDATE_TARGET_PRICE="UPDATE_TARGET_PRICE";
 const UPDATE_TRADE_QTY="UPDATE_TRADE_QTY";
 
 /////Switch/////
@@ -62,6 +64,8 @@ function reducer(state = initialState, action) {
             return Object.assign({},state,{tradeQty: action.payload})
         case UPDATE_ORDER_TYPE:
             return Object.assign({},state,{orderType: action.payload})
+        case UPDATE_TARGET_PRICE:
+            return Object.assign({},state,{targetPrice: action.payload})
         default:
             return state;
     }
@@ -144,6 +148,12 @@ export function updateOrderType(orderType) {
 export function updateHandleAddToWatchlist(){
     return{
         type: UPDATE_HANDLE_ADD_TO_WATCHLIST
+    }
+}
+export function updateTargetPrice(targetPrice){
+    return{
+        type: UPDATE_TARGET_PRICE,
+        payload: targetPrice
     }
 }
 

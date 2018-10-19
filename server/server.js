@@ -27,6 +27,7 @@ app.get('/api/nonowned/symbols', stockCtrl.nonOwnedSymbols)
 
 app.post('/api/purchase', stockCtrl.purchase)
 app.post('/api/add', stockCtrl.addNonowned)
+app.post('/api/orders',stockCtrl.addPending)
 
 app.put('/api/shares', stockCtrl.shares)
 
