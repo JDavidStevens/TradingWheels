@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab } from '../../../ducks/reducer';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
-import Trade from '../Trade/trade';
+import TradeNonOwned from './TradeNonOwned/tradeNonOwned';
 
 class NonOwned extends Component {
   constructor() {
@@ -36,7 +36,7 @@ class NonOwned extends Component {
             {this.props.quotes[element.symbol].quote.change >= 0 ?
               <td className="positive">{this.props.quotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.quotes[element.symbol].quote.change}</td>}
               <td><Popup trigger={<button>Buy</button>} position="right">
-            <Trade />
+            <TradeNonOwned currentPurchase={element} purchasePrice={this.props.quotes[element.symbol].quote.latestPrice}/>
           </Popup></td>
           </tr>
           </tbody>

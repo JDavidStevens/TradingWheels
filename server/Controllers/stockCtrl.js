@@ -38,8 +38,8 @@ module.exports = {
 
     newPurchase: (req, res) => {
         const dbInstance = req.app.get('db');
-        const { stock_name, symbol, shares, purchase_price } = req.body;
-        dbInstance.purchase([req.session.user.id, stock_name, symbol, shares, purchase_price])
+        const { name, symbol, qty, basis } = req.body;
+        dbInstance.purchase([name, symbol, qty, basis])
             .then(() => {
                 res.sendStatus(200)
             }).catch(err => {
