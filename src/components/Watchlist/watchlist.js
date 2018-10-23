@@ -32,8 +32,7 @@ class Watchlist extends Component {
     this.props.updateMyStocks(myRes.data);
     this.props.updateNonOwnedStocks(res.data);
     this.props.updatePending(resp.data);
-    console.log("resp",resp.data)
-  }
+    }
 
 
   render() {

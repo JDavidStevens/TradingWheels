@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks } from '../../../../ducks/reducer';
+import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks,updateOrderInfo } from '../../../../ducks/reducer';
 import LimitStopOwned from './limitStopOwned';
+import {Link} from 'react-router-dom';
 
 
 class TradeOwned extends Component {
@@ -66,7 +66,7 @@ class TradeOwned extends Component {
                     {this.props.orderType === "" ? (null) : (this.props.orderType === "trigger")
                         ? (<LimitStopOwned currentTrade={this.props.currentTrade} currentPrice={this.props.currentPrice}/>) : (this.props.orderType === "Sell All Shares ")
                             ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.id)} />) : (this.props.orderType === "Buy ")
-                                ? (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)} />) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)} />)}
+                                ? (<Link to='/oconfirm' onClick={()=>this.props.updateOrderInfo(this.props.currentTrade.symbol,this.props.currentPrice)}><input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)}/></Link>) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)} />)}
 
                 </form>
             </div>
@@ -84,5 +84,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-    mapStateToProps, { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks }
+    mapStateToProps, { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks,updateOrderInfo }
 )(TradeOwned);

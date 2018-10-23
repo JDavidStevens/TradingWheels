@@ -12,7 +12,8 @@ const initialState = {
     orderType: '',
     targetPrice: 0,
     pendingQuantity: 0,
-    pendingTrigger: 0
+    pendingTrigger: 0,
+    orderInfo: []
 }
 
 
@@ -31,6 +32,7 @@ const UPDATE_TARGET_PRICE = "UPDATE_TARGET_PRICE";
 const UPDATE_TRADE_QTY = "UPDATE_TRADE_QTY";
 const UPDATE_PENDING_QUANTITY = "UPDATE_PENDING_QUANTITY";
 const UPDATE_PENDING_TRIGGER = "UPDATE_PENDING_TRIGGER";
+const UPDATE_ORDER_INFO = "UPDATE_ORDER_INFO";
 
 /////Switch/////
 function reducer(state = initialState, action) {
@@ -67,6 +69,8 @@ function reducer(state = initialState, action) {
             return Object.assign({}, state, { pendingQuantity: action.payload })
         case UPDATE_PENDING_TRIGGER:
             return Object.assign({}, state, { pendingTrigger: action.payload })
+        case UPDATE_ORDER_INFO:
+            return Object.assign({}, state, { orderInfo: action.payload })
         default:
             return state;
     }
@@ -145,18 +149,23 @@ export function updateTargetPrice(targetPrice) {
         payload: targetPrice
     }
 }
-export function updatePendingQuantity(pendingQuantity){
-    return{
+export function updatePendingQuantity(pendingQuantity) {
+    return {
         type: UPDATE_PENDING_QUANTITY,
         payload: pendingQuantity
     }
 }
-export function updatePendingTrigger(pendingTrigger){
-    return{
+export function updatePendingTrigger(pendingTrigger) {
+    return {
         type: UPDATE_PENDING_TRIGGER,
         payload: pendingTrigger
     }
 }
-
+export function updateOrderInfo(orderInfo){
+    return{
+        type: UPDATE_ORDER_INFO,
+        payload: orderInfo
+    }
+}
 
 export default reducer;

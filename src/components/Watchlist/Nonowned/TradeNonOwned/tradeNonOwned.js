@@ -22,6 +22,7 @@ axios.post(`/api/newPurchase`,{name,symbol,qty,basis}).then(
     
 
     render() {
+        console.log("buySell",this.props.buySell);
 let basis = parseInt(this.props.tradeQty) * parseInt(this.props.purchasePrice) 
         
         return (

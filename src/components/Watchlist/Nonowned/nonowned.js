@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab } from '../../../ducks/reducer';
+import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell } from '../../../ducks/reducer';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import TradeNonOwned from './TradeNonOwned/tradeNonOwned';
@@ -28,7 +28,7 @@ class NonOwned extends Component {
   }
 
   render() {
-
+    
     const nonOwnedStockList = this.props.nonOwnedStocks.map((element, index) => {
       
         return (
@@ -40,7 +40,7 @@ class NonOwned extends Component {
             <td>{this.props.quotes[element.symbol].quote.previousClose}</td>
             {this.props.quotes[element.symbol].quote.change >= 0 ?
               <td className="positive">{this.props.quotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.quotes[element.symbol].quote.change}</td>}
-              <td><Popup trigger={<button>Buy</button>} position="right">
+              <td><Popup trigger={<button>Buy</button>} position="right" >
             <TradeNonOwned currentPurchase={element} purchasePrice={this.props.quotes[element.symbol].quote.latestPrice}/>
           </Popup></td>
           <td><button onClick={()=>this.handleRemove(element.id)}>Remove</button></td>
@@ -90,5 +90,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab }
+  mapStateToProps, { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell }
 )(NonOwned);
