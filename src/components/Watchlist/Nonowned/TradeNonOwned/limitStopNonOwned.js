@@ -1,66 +1,61 @@
-// import React, {Component} from 'react';
-// import axios from 'axios';
-// import { connect } from 'react-redux';
-// import {updateTargetPrice} from '../../../../ducks/reducer'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateTargetPrice } from '../../../../ducks/reducer'
 
-// class LimitStopNonOwned extends Component{
-//     constructor(){
-//         super()
+class LimitStopNonOwned extends Component {
+    constructor() {
+        super()
 
-// this.handlePendingOrder=this.handlePendingOrder.bind(this);
-//     }
-
-
-//     handlePendingOrder(company,symbol,qty,triggerPrice,type,tradeType){
-//         console.log("pre-axios", company,symbol,qty,triggerPrice,type,tradeType)
-// axios.post('/api/orders',{company,symbol,qty,triggerPrice,type,tradeType})
-
-//     }
+        this.handlePendingOrder = this.handlePendingOrder.bind(this);
+    }
 
 
-//     render(){
+    handlePendingOrder(id,company, symbol, qty, triggerPrice, type, tradeType) {
+        console.log("pre-axios", company, symbol, qty, triggerPrice, type, tradeType)
+        axios.post('/api/orders', { company, symbol, qty, triggerPrice, type, tradeType }).then(
+            axios.delete(`/api/remove/${id}`)
+        )
 
-//         console.log("props",this.props,this.props.currentTrade,this.props.currentPrice)
-//         let {stock_name,symbol,shares}= this.props.currentTrade;
-//         let {currentPrice} = this.props;
-
-// function orderTypeSelector(current,requested,type){
-//     if(current >= requested){
-//         return "Limit"
-//     }else{
-//         return "Stop Loss"
-//     }
-// }
+    }
 
 
-//         return(
-// <div>
-    
-//     <div>
-         
-//         <input placeholder="Desired Target Price" onChange={e=>this.props.updateTargetPrice(e.target.value)}/>
+    render() {
 
-//         {(this.props.buySell === "Sell All Shares ")
-//                             ? (<input type="submit" onClick={
-//                                 () => this.handlePendingOrder(stock_name,symbol,shares,this.props.targetPrice,orderTypeSelector(currentPrice,this.props.targetPrice,this.props.buySell),tradeTypeConverter(this.props.buySell))} />) : (this.props.buySell === "Buy " || this.props.buySell==="Sell ")
-//                                 ? (<input type="submit" onClick={() => this.handlePendingOrder(stock_name,symbol,this.props.tradeQty,this.props.targetPrice,orderTypeSelector(currentPrice,this.props.targetPrice,this.props.buySell),this.props.buySell)} />) : (null)}
-//     </div>
-// </div>
+        let { id,stock_name, symbol} = this.props.nonOwnedTrigger;
+        let { currentPriceNonOwned } = this.props;
 
-//         )
-//     }
-// }
+        function orderTypeSelector(current, requested) {
+            if (current >= requested) {
+                return "Limit"
+            } else {
+                return "Stop Loss"
+            }
+        }
 
-// function mapStateToProps(state) {
-//     const { buySell, tradeQty, orderType, targetPrice } = state;
-//     return {
-//         buySell,
-//         tradeQty,
-//         orderType,
-//         targetPrice
-//     }
-// }
+        let buy = "Buy "
+        return (
+            <div>
+                <div>
+                    <input placeholder="Desired Target Price" onChange={e => this.props.updateTargetPrice(e.target.value)} />
+                    <input type="submit" onClick={() => this.handlePendingOrder(id,stock_name, symbol, this.props.tradeQty, this.props.targetPrice, orderTypeSelector(currentPriceNonOwned, this.props.targetPrice), buy)} />
+                </div>
+            </div>
 
-// export default connect(
-//     mapStateToProps, { updateTargetPrice }
-// )(LimitStopNonOwned);
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    const { buySell, tradeQty, orderType, targetPrice } = state;
+    return {
+        buySell,
+        tradeQty,
+        orderType,
+        targetPrice
+    }
+}
+
+export default connect(
+    mapStateToProps, { updateTargetPrice }
+)(LimitStopNonOwned);

@@ -39,7 +39,7 @@ let basis = parseInt(this.props.tradeQty) * parseInt(this.props.purchasePrice)
                     </select>
                     <br /><br />
                     {(this.props.orderType === "trigger")
-                        ? (<LimitStopNonOwned currentTrade={this.props.currentTrade} currentPrice={this.props.currentPrice}/>) : (this.props.orderType=== "Buy ")
+                        ? (<LimitStopNonOwned nonOwnedTrigger={this.props.currentPurchase} currentPriceNonOwned={this.props.purchasePrice}/>) : (this.props.orderType=== "Buy ")
                                 ? (<input type="submit" onClick={() => this.handleNewPurchase(this.props.currentPurchase.id,this.props.currentPurchase.stock_name,this.props.currentPurchase.symbol,this.props.tradeQty,basis)} />):(null) }
                 </form>
             </div>

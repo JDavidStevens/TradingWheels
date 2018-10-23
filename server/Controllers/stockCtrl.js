@@ -29,7 +29,7 @@ module.exports = {
         dbInstance.pending()
             .then(stocks => {
                 res.status(200).send(stocks)
-                console.log("getPending",stocks)
+                // console.log("getPending",stocks)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);
@@ -76,9 +76,10 @@ module.exports = {
 
     remove: (req, res) => {
         const dbInstance = req.app.get('db');
-        dbInstance.deleteWatching([req.session.user.id, req.body.id])
-            .then(stocks => {
-                res.status(200).send(stocks)
+        dbInstance.deleteWatching([req.params.id])
+        console.log("delete",req.params.id)
+            .then(() => {
+                res.sendStatus(200)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);
