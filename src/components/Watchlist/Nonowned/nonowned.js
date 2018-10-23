@@ -9,6 +9,7 @@ class NonOwned extends Component {
   constructor() {
     super()
     this.handleAddToWatchlist = this.handleAddToWatchlist.bind(this);
+    this.handleRemove=this.handleRemove.bind(this);
   }
 
   async handleAddToWatchlist() {
@@ -20,6 +21,10 @@ class NonOwned extends Component {
       .then(() => {
         this.props.updateHandleAddToWatchlist()
       })
+  }
+
+  handleRemove(id){
+    axios.delete(`/api/remove/${id}`)
   }
 
   render() {
@@ -38,6 +43,7 @@ class NonOwned extends Component {
               <td><Popup trigger={<button>Buy</button>} position="right">
             <TradeNonOwned currentPurchase={element} purchasePrice={this.props.quotes[element.symbol].quote.latestPrice}/>
           </Popup></td>
+          <td><button onClick={()=>this.handleRemove(element.id)}>Remove</button></td>
           </tr>
           </tbody>
         )
