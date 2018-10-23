@@ -64,7 +64,7 @@ module.exports = {
     shares: (req, res) => {
         const dbInstance = req.app.get('db');
         const { qty, price } = req.body;
-        dbInstance.partial([req.body.id, qty, price])
+        dbInstance.partial([req.params.id, qty, price])
             // console.log("addShares",id,qty,price)
             .then(() => {
                 res.sendStatus(200)
@@ -77,7 +77,7 @@ module.exports = {
     remove: (req, res) => {
         const dbInstance = req.app.get('db');
         dbInstance.deleteWatching([req.params.id])
-            .then((stock) => {
+            .then((stocks) => {
                 res.status(200).send(stocks)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });

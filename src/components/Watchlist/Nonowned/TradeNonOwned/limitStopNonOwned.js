@@ -10,19 +10,16 @@ class LimitStopNonOwned extends Component {
         this.handlePendingOrder = this.handlePendingOrder.bind(this);
     }
 
-
-    handlePendingOrder(id,company, symbol, qty, triggerPrice, type, tradeType) {
-        console.log("pre-axios", company, symbol, qty, triggerPrice, type, tradeType)
+    handlePendingOrder(id, company, symbol, qty, triggerPrice, type, tradeType) {
         axios.post('/api/orders', { company, symbol, qty, triggerPrice, type, tradeType }).then(
             axios.delete(`/api/remove/${id}`)
         )
 
     }
 
-
     render() {
 
-        let { id,stock_name, symbol} = this.props.nonOwnedTrigger;
+        let { id, stock_name, symbol } = this.props.nonOwnedTrigger;
         let { currentPriceNonOwned } = this.props;
 
         function orderTypeSelector(current, requested) {
@@ -38,7 +35,7 @@ class LimitStopNonOwned extends Component {
             <div>
                 <div>
                     <input placeholder="Desired Target Price" onChange={e => this.props.updateTargetPrice(e.target.value)} />
-                    <input type="submit" onClick={() => this.handlePendingOrder(id,stock_name, symbol, this.props.tradeQty, this.props.targetPrice, orderTypeSelector(currentPriceNonOwned, this.props.targetPrice), buy)} />
+                    <input type="submit" onClick={() => this.handlePendingOrder(id, stock_name, symbol, this.props.tradeQty, this.props.targetPrice, orderTypeSelector(currentPriceNonOwned, this.props.targetPrice), buy)} />
                 </div>
             </div>
 

@@ -38,7 +38,8 @@ class TradeOwned extends Component {
         let difference=parseInt(this.props.currentTrade.shares)-parseInt(this.props.tradeQty);
         let reduceShares=parseInt(this.props.currentTrade.purchase_price)-parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice);
 
-        console.log("currentTrade",this.props.currentTrade)
+        let orderConfirmInfo= [this.props.currentTrade.symbol,this.props.currentPrice]
+
         return (
             <div className="Trade">
                 <h1>{this.props.currentTrade.symbol}</h1>
@@ -65,8 +66,8 @@ class TradeOwned extends Component {
                     <br /><br />
                     {this.props.orderType === "" ? (null) : (this.props.orderType === "trigger")
                         ? (<LimitStopOwned currentTrade={this.props.currentTrade} currentPrice={this.props.currentPrice}/>) : (this.props.orderType === "Sell All Shares ")
-                            ? (<input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.id)} />) : (this.props.orderType === "Buy ")
-                                ? (<Link to='/oconfirm' onClick={()=>this.props.updateOrderInfo(this.props.currentTrade.symbol,this.props.currentPrice)}><input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)}/></Link>) : (<input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)} />)}
+                            ? (<Link to='/oconfirm' onClick={()=>this.props.updateOrderInfo(orderConfirmInfo)}><input type="submit" onClick={() => this.handleSellAll(this.props.currentTrade.id)} /></Link>) : (this.props.orderType === "Buy ")
+                                ? (<Link to='/oconfirm' onClick={()=>this.props.updateOrderInfo(orderConfirmInfo)}><input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,sum,addShares)}/></Link>) : (<Link to='/oconfirm' onClick={()=>this.props.updateOrderInfo(orderConfirmInfo)}><input type="submit" onClick={() => this.handleTradeShares(this.props.currentTrade.id,difference,reduceShares)}/></Link>)}
 
                 </form>
             </div>
