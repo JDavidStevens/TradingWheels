@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import axios from 'axios';
-import Popup from 'reactjs-popup';
-import EditPending from './EditPending/editPending';
+import {updatePending} from '../../../ducks/reducer';
+
 
 class Pending extends Component {
     constructor(){
@@ -12,7 +12,9 @@ class Pending extends Component {
     }
 
     handleCancel(id){
-        axios.delete(`/api/cancel/${id}`)
+        axios.delete(`/api/cancel/${id}`).then(res=>{
+            this.props.updatePending(res.data)
+        })
     }
     
     render() {
@@ -31,7 +33,6 @@ console.log("pendpage",this.props.pending)
                             <td>{element.shares}</td>
                             <td>{element.trigger_price}</td>
                             <td>{this.props.quotes[element.symbol].quote.latestPrice}</td>
-                            <td><Popup trigger={<button>Edit Order</button>}><EditPending/></Popup></td>
                             <td><button onClick={()=>this.handleCancel(element.id)}>Cancel Order</button></td>
                         </tr>
                     </tbody>
@@ -50,7 +51,6 @@ console.log("pendpage",this.props.pending)
                             <td>{element.shares}</td>
                             <td>{element.trigger_price}</td>
                             <td>{this.props.quotes[element.symbol].quote.latestPrice}</td>
-                            <td><Popup trigger={<button>Edit Order</button>}><EditPending/></Popup></td>
                             <td><button onClick={()=>this.handleCancel(element.id)}>Cancel Order</button></td>
                         </tr>
                     </tbody>
@@ -107,4 +107,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Pending)
+export default connect(mapStateToProps,{updatePending})(Pending)

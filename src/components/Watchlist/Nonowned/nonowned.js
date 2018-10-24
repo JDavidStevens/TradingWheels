@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell } from '../../../ducks/reducer';
+import { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell,updateNonOwnedStocks } from '../../../ducks/reducer';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import TradeNonOwned from './TradeNonOwned/tradeNonOwned';
@@ -12,20 +12,19 @@ class NonOwned extends Component {
     this.handleRemove=this.handleRemove.bind(this);
   }
 
-  async handleAddToWatchlist() {
+  handleAddToWatchlist() {
     let { addCompany, addSymbol } = this.props;
-    axios.post(`/api/add`, { addCompany, addSymbol })
-      .then(() => {
-        this.props.updateTab("non-owned")
-      })
-      .then(() => {
-        this.props.updateHandleAddToWatchlist()
-      })
+    axios.post(`/api/add`, { addCompany, addSymbol }).then(res=>{
+      this.props.updateNonOwnedStocks(res.data)
+    })
+      
   }
 
-  handleRemove(id){
-    axios.delete(`/api/remove/${id}`)
-  }
+ async handleRemove(id){
+   axios.delete(`/api/remove/${id}`).then(res=>{
+     this.props.updateNonOwnedStocks(res.data);
+   })
+}
 
   render() {
     
@@ -43,7 +42,8 @@ class NonOwned extends Component {
               <td><Popup trigger={<button>Buy</button>} position="right" >
             <TradeNonOwned currentPurchase={element} purchasePrice={this.props.quotes[element.symbol].quote.latestPrice}/>
           </Popup></td>
-          <td><button onClick={()=>this.handleRemove(element.id)}>Remove</button></td>
+          <td><button onClick={()=>this.handleRemove(element.id)}
+          >Remove</button></td>
           </tr>
           </tbody>
         )
@@ -90,5 +90,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell }
+  mapStateToProps, { updateAddCompany, updateAddSymbol, updateHandleAddToWatchlist, updateTab, updateBuySell,updateNonOwnedStocks }
 )(NonOwned);
