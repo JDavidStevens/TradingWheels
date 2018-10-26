@@ -63,6 +63,11 @@ class Owned extends Component {
 
           {myStockList}
         </table>
+        <div>
+        <footer>
+        Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+        </footer>
+        </div>
       </div>
     );
   }

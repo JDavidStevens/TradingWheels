@@ -28,7 +28,7 @@ class Login extends Component {
 
   render() {
 
-const fadeImages=['https://d1qq9lwf5ow8iz.cloudfront.net/live-images-1/ImageDetail_7d2ca19d-c58f-4e6c-a07e-f6eb1682be2f_Large', 'http://static1.squarespace.com/static/56200fcee4b02025054662d7/56201861e4b007035b102ef9/56ef4f4d86db433c87c99121/1505398624034/wall+street.jpg?format=1000w', 'https://www.nyse.com/publicdocs/images/NYSE_ExchangeData_RealTime_media_tile.jpg'];
+const fadeImages=['https://d1qq9lwf5ow8iz.cloudfront.net/live-images-1/ImageDetail_7d2ca19d-c58f-4e6c-a07e-f6eb1682be2f_Large', 'https://mylifeasjulia945.files.wordpress.com/2017/05/0218171041b-1.jpg', 'https://www.nyse.com/publicdocs/images/NYSE_ExchangeData_RealTime_media_tile.jpg'];
 
 const fadeProperties={
   duration: 3000,
@@ -68,9 +68,7 @@ const Slideshow = () => {
     return (
 
       <div className="login">
-        <div className="container">
-          {Slideshow()}
-          
+        <h1 className="login-title">Trading Wheels</h1>
           <table className="centered">
             <tr>
               <th>S&P 500</th>
@@ -83,10 +81,16 @@ const Slideshow = () => {
               {percent(this.state.dia) >= 0 ? <td className="positive">{percent(this.state.dia)}%</td> : <td className="negative">{percent(this.state.dia)}%</td>}
             </tr>
           </table>
+        <div className="container">
+          {Slideshow()}
+          
         </div>
         <div>
           <button className="login-button"><Link to='/list' className="login-link">Login/Register</Link></button>
         </div>
+        <footer className="login-footer">
+        Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+        </footer>
       </div>
     );
   }
