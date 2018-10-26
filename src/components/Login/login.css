@@ -1,14 +1,14 @@
-.login{
+    .login{
     height: 100vh;
     background-image: linear-gradient(45deg,grey 30%,black);
-    color: grey;
+    color: silver;
 }
-
-.login-title{
+    .login-title{
     color: white;
     margin-top: 0;
     padding-top:1vh;
 }
+
 .positive{
     color: greenyellow;
 }
@@ -20,17 +20,15 @@
 .image-container{
     width: 100%;
     height: 28vh;
-    margin-top: 15vh;
-}
+    margin-top: 5vh;
+    }
 
-.centered{
-width: 100%;
-position: absolute;
-/* top: 20%;
-left:50%;
-transform: translate(-50%, -50%) */
-}
-
+/* .centered{
+    margin-top: 10vh;
+    color: white;
+    padding: 0 10vw 0 10vw;
+    } */
+    
 
 .login-button{
     margin-top: 4vh;    
@@ -48,4 +46,81 @@ transform: translate(-50%, -50%) */
     margin-top: 5vh;
     font-size: 8px;
     color: black;
+}
+
+/* ****@media(min-width:750px)**** */
+/* @media(min-width:750px){
+    .login{
+    height: 100vh;
+    background-image: linear-gradient(15deg,grey 30%,black);
+    color: white;
+    }
+} */
+
+@media(min-width:750px){
+    .login-title{
+    color: white;
+    font-size: 4vw;
+    }
+}
+
+@media(min-width:750px){
+    .centered{
+        width: 92.5%;
+        margin-top: 15vh;
+        font-size: 3vw;
+        /* padding: 0 7vw 0 7vw; */
+        }
+}
+
+@media(min-width:750px){
+    .login-image{
+        background-image: url('https://mylifeasjulia945.files.wordpress.com/2017/05/0218171041b-1.jpg');
+        filter:blur(8px);
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media(min-width:750px){
+.login-content{
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+}
+}
+/* @media(min-width:750px){
+    .container{
+        height: auto;     
+        margin: auto;
+    }
+} */
+@media(min-width:750px){
+    .image-container{
+    height: 34vh;    
+    }
+}
+
+@media(min-width:750px){
+    .login-button{
+    top: 20%;    
+    background-color: black;
+    box-shadow: 12px -8px 4px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    height: 6vh;
+    width: 9vw;
+    font-size: 1vw;
+    font-weight: 700;
+    }
+}
+
+@media(min-width:750px){
+    .login-footer{
+    margin-top: 5vh;
+    font-size: 12px;
+    color: white;
+    }
 }
