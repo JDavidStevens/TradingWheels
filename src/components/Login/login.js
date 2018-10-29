@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Zoom } from 'react-slideshow-image';
+import Media from 'react-media';
 import './login.css';
 
 
@@ -58,6 +59,14 @@ class Login extends Component {
         </Zoom>
       )
     }
+ let media= window.matchMedia("(max-width: 749px)")
+    // function slider(x){
+    //   if(x.matches){
+    //     document.container.style.backgroundImage=Slideshow();
+    //   }
+    // }
+
+    // var x = window.matchMedia("(max-width:749px)")
 
     function percent(num) {
       var multiplier = num * 100;
@@ -83,9 +92,12 @@ class Login extends Component {
             {percent(this.state.dia) >= 0 ? <td className="positive">{percent(this.state.dia)}%</td> : <td className="negative">{percent(this.state.dia)}%</td>}
           </tr>
         </table>
-        {/* <div className="container">
-          {Slideshow()}
-        </div> */}
+        <div>
+          <Media 
+          query="(max-width: 749px)"
+          render={()=><div>{Slideshow()}</div>}
+          />
+        </div>
         
         <div>
           <button className="login-button"><Link to='/list' className="login-link">Login/Register</Link></button>

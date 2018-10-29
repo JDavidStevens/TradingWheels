@@ -11,6 +11,7 @@
     "massive": "^5.5.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-media": "^1.8.0",
     "react-popup": "^0.9.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
