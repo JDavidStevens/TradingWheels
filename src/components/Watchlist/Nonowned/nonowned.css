@@ -1,0 +1,184 @@
+
+    .Watchlist{
+        width: 100%;
+        background-image: linear-gradient(0deg,grey 25%,black);
+    }
+    
+    .nonowned-add{
+        width:85%;
+        color: white;
+        margin:auto;
+        margin-top: 2vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nonowned-add-company{
+        margin-bottom: 1vh;
+        background-color: whitesmoke;
+    }
+    
+    .nonowned-add-symbol{
+        margin-bottom: 1vh;
+        background-color: whitesmoke;
+    }
+    
+    .nonowned-add-button{
+        font-weight: 600;
+        width: 35%;
+        margin: auto;
+        background-color: silver;
+    }
+
+    .nonowned-table{
+        border: 1px solid ;
+        margin-top:2vh;
+    }
+    
+    .nonowned-th{
+        border: 1px solid grey;
+        color: lightgray;
+    }
+
+    .nonowned-th2{
+        border: 1px solid grey;
+        color: lightgray;
+    }
+   
+    .nonowned-Td{
+        border: 1px solid grey;
+        color: white;
+    }
+    
+    .nonowned-table-positive{
+        border: 1px solid grey;
+        color: yellowgreen;
+    }
+    
+    .nonowned-table-negative{
+        border: 1px solid grey;
+        color: red;
+    }
+
+    .nonowned-buy{
+        background-color: silver;
+        font-weight: 600;
+    }
+
+    .remove{
+        margin-top: 2vw;
+        background-color: silver;
+        font-weight: 600;
+    }
+    
+    .watchlist-footer{
+        margin-top:12%;
+        font-size: 2vh;
+    } 
+        
+/* ***@media(min-width: 750px)*** */
+@media(min-width:750px){
+.Watchlist{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(355deg,grey 30%,black);
+}
+
+.nonowned-add{
+    width:35%;
+    color: white;    
+    margin: 2vh 25vw 0 3.9vw;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    
+}
+
+.nonowned-add-company{
+    margin: 1vh 1vw 1vh 0;
+    background-color: whitesmoke;
+}
+
+.nonowned-add-symbol{
+    margin-right: 1vw;
+    background-color: whitesmoke;
+}
+
+.nonowned-add-button{
+    font-weight: 600;
+    width: 35%;
+    margin: auto;
+    background-color: silver;
+}
+.nonowned-add-button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.nonowned-table{
+    width:92.5%;
+    border: 1px solid grey;
+    margin:auto;
+    table-layout: fixed;
+}
+
+.nonowned-th{
+    width: 1vw;
+    border: 1px solid grey;
+    color: lightgray;
+}
+
+.nonowned-Td{
+    width: 1vw;
+    border: 1px solid grey;
+    color: white;
+}
+
+.nonowned-Td-remove{
+    width: 1vw;
+    border: 1px solid grey;
+    color: white;
+}
+.nonowned-Td-buy{
+    width: 1vw;
+    border: 1px solid grey;
+    color: white;
+}
+
+.nonowned-table-positive{
+    border: 1px solid grey;
+    color: yellowgreen;
+}
+
+.nonowned-table-negative{
+    border: 1px solid grey;
+    color: red;
+}
+
+.nonowned-buy{
+    background-color: silver;
+    font-weight: 600;
+}
+.nonowned-buy:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.remove{
+    background-color: silver;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.remove:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.watchlist-footer{
+    margin-top:29%;
+}
+} 

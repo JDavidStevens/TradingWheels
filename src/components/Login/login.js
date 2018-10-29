@@ -43,31 +43,22 @@ class Login extends Component {
         <Zoom {...fadeProperties}>
           <div className='each-fade'>
             <div className="image-container">
-              <img src={fadeImages[0]} />
+              <img src={fadeImages[0]} alt=''/>
             </div>
           </div>
           <div className='each-fade'>
             <div className="image-container">
-              <img src={fadeImages[1]} />
+              <img src={fadeImages[1]} alt=''/>
             </div>
           </div>
           <div className='each-fade'>
             <div className="image-container">
-              <img src={fadeImages[2]} />
+              <img src={fadeImages[2]} alt=''/>
             </div>
           </div>
         </Zoom>
       )
     }
- let media= window.matchMedia("(max-width: 749px)")
-    // function slider(x){
-    //   if(x.matches){
-    //     document.container.style.backgroundImage=Slideshow();
-    //   }
-    // }
-
-    // var x = window.matchMedia("(max-width:749px)")
-
     function percent(num) {
       var multiplier = num * 100;
       var quote = multiplier.toFixed(2)
@@ -100,7 +91,9 @@ class Login extends Component {
         </div>
         
         <div>
-          <button className="login-button"><Link to='/list' className="login-link">Login/Register</Link></button>
+          <button className="login-button">
+          <Link to='/list' className="login-link">Login/Register</Link>
+          </button>
         </div>
         <footer className="login-footer">
           Data provided for free by <a href="https://iextrading.com/developer">IEX</a><br/>  View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>

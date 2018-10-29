@@ -1,0 +1,10 @@
+.Watchlist{
+    height: 178vh;
+    /* width: 200%; */
+    background-image: linear-gradient(0deg,grey 30%,black);
+}
+
+.watchlist-heading{
+    /* width: 200%; */
+    background-image: linear-gradient(0deg,grey 30%,black);   
+}

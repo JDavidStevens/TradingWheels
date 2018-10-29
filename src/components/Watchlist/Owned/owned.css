@@ -1,0 +1,77 @@
+
+    .Watchlist{
+        width: 100%;
+        background-image: linear-gradient(0deg,grey 25%,black);
+    }
+    
+    
+    .owned-table{
+        border: 1px solid ;
+        margin:auto;
+    }
+    
+    .owned-th{
+        border: 1px solid grey;
+        color: lightgray;
+    }
+   
+    .owned-Td{
+        border: 1px solid grey;
+        color: white;
+    }
+    
+    .owned-table-positive{
+        border: 1px solid grey;
+        color: yellowgreen;
+    }
+    
+    .owned-table-negative{
+        border: 1px solid grey;
+        color: red;
+    }
+    
+    .watchlist-footer{
+        margin-top:12%;
+        font-size: 2vh;
+    } 
+        
+/* ***@media(min-width: 750px)*** */
+@media(min-width:750px){
+.Watchlist{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(355deg,grey 30%,black);
+}
+
+.owned-table{
+    width:92.5%;
+    border: 1px solid grey;
+    margin:auto;
+}
+
+.owned-th{
+    width: 1vw;
+    border: 1px solid grey;
+    color: lightgray;
+}
+
+.owned-td{
+    width: 1vw;
+    border: 1px solid grey;
+    color: white;
+}
+
+.owned-table-positive{
+    border: 1px solid grey;
+    color: yellowgreen;
+}
+
+.owned-table-negative{
+    border: 1px solid grey;
+    color: red;
+}
+
+.watchlist-footer{
+    margin-top:29%;
+}
+} 

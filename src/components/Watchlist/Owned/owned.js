@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Popup from 'reactjs-popup';
+import {Table,Thead,Tbody,Tr,Th,Td} from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import TradeOwned from './TradeOwned/tradeOwned';
+import './owned.css';
 
 
 
@@ -19,24 +22,24 @@ class Owned extends Component {
       let currentTotal = total.toFixed(2);
       return (
 
-        <tbody key={index}>
-          <tr >
-            <td>{element.stock_name}</td>
-            <td>{element.symbol}</td>
-            <td>{this.props.quotes[element.symbol].quote.latestPrice}</td>
-            <td>{this.props.quotes[element.symbol].quote.previousClose}</td>
+        <Tbody key={index}>
+          <Tr >
+            <Td className="owned-Td">{element.stock_name}</Td>
+            <Td className="owned-Td">{element.symbol}</Td>
+            <Td className="owned-Td">{this.props.quotes[element.symbol].quote.latestPrice}</Td>
+            <Td className="owned-Td">{this.props.quotes[element.symbol].quote.previousClose}</Td>
             {this.props.quotes[element.symbol].quote.change >= 0 ?
-              <td className="positive">{this.props.quotes[element.symbol].quote.change}</td> : <td className="negative">{this.props.quotes[element.symbol].quote.change}</td>}
-            <td>{element.shares}</td>
-            <td>{avgSharePrice}</td>
+              <Td className="owned-table-positive">{this.props.quotes[element.symbol].quote.change}</Td> : <Td className="owned-table-negative">{this.props.quotes[element.symbol].quote.change}</Td>}
+            <Td className="owned-Td">{element.shares}</Td>
+            <Td className="owned-Td">{avgSharePrice}</Td>
             {capital >= 0 ?
-              <td className="positive">{capital}</td> : <td className="negative">{capital}</td>}
-            <td>{currentTotal}</td>
-            <td><Popup trigger={<button>Buy More/Sell</button>}>
+              <Td className="owned-table-positive">{capital} </Td> : <Td className="owned-table-negative">{capital}</Td>}
+            <Td className="owned-Td">{currentTotal}</Td>
+            <Td className="owned-Td"><Popup trigger={<button>Buy More/Sell</button>}>
               <TradeOwned currentTrade={element} currentPrice={this.props.quotes[element.symbol].quote.latestPrice}/>
-            </Popup></td>
-          </tr>
-        </tbody>
+            </Popup></Td>
+          </Tr>
+        </Tbody>
 
 
 
@@ -45,26 +48,27 @@ class Owned extends Component {
 
     return (
       <div className="Watchlist">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Symbol</th>
-              <th>Current Price</th>
-              <th>Previous Close</th>
-              <th>Change</th>
-              <th>Shares</th>
-              <th>Average Purchase Price Per Share</th>
-              <th>Gain/Loss</th>
-              <th>Total Current Value</th>
-              <th>Trade</th>
-            </tr>
-          </thead>
+        <Table className="owned-table">
+          <Thead>
+            <Tr>
+              <Th className="owned-th">Name</Th>
+              <Th className="owned-th">Symbol</Th>
+              <Th className="owned-th">Current Price</Th>
+              <Th className="owned-th">Previous Close</Th>
+              <Th className="owned-th">Change</Th>
+              <Th className="owned-th">Shares</Th>
+              <Th className="owned-th">Avg Purchase</Th>
+              {/* <Th className="owned-th">Average Purchase Price Per Share</Th> */}
+              <Th className="owned-th">Gain/Loss</Th>
+              <Th className="owned-th">Total Value</Th>
+              <Th className="owned-th">Trade</Th>
+            </Tr>
+          </Thead>
 
           {myStockList}
-        </table>
+        </Table>
         <div>
-        <footer>
+        <footer className="watchlist-footer">
         Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
         </footer>
         </div>

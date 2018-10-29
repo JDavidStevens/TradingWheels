@@ -42,10 +42,9 @@ class Watchlist extends Component {
       <div><Navbar/></div>
 
       {/* ternary to allow time for state to update and return info so code does not break */}
+      <div className="watchlist-heading">
         {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
-
-        <h1>Watchlist</h1>
-
+        </div>
         <div>
           <button onClick={() => this.props.updateTab('owned')}>Owned</button>
           <button onClick={() => this.props.updateTab('non-owned')}>Non-Owned</button>
