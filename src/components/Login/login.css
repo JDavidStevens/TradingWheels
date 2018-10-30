@@ -10,7 +10,7 @@
 }
 
 .positive{
-    color: greenyellow;
+    color: rgb(0 202 0);
 }
 
 .negative{
@@ -28,7 +28,6 @@
     width: 92.5%;
     margin-top: 5vh;
     color: white;
-    /* padding: 0 10vw 0 10vw; */
 }
     
     
@@ -52,30 +51,19 @@
 }
 
 /* ****@media(min-width:750px)**** */
-/* @media(min-width:750px){
-    .login{
-    height: 100vh;
-    background-image: linear-gradient(15deg,grey 30%,black);
-    color: white;
-    }
-} */
 
 @media(min-width:750px){
     .login-title{
     color: white;
     font-size: 4vw;
     }
-}
 
-@media(min-width:750px){
     .centered{
         width: 92.5%;
         margin-top: 15vh;
         font-size: 3vw;
         }
-}
 
-@media(min-width:750px){
     .login-image{
         background-image: url('https://mylifeasjulia945.files.wordpress.com/2017/05/0218171041b-1.jpg');
         filter:blur(8px);
@@ -84,28 +72,21 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-}
 
-@media(min-width:750px){
 .login-content{
     position: absolute;
     top: 10%;
     left: 25%;
     width: 50%;
 }
-}
 
-@media(min-width:750px){
     .image-container{
     height: 34vh;    
     }
-}
 
-@media(min-width:750px){
     .login-button{
     top: 20%;    
     background-color: black;
-    /* box-shadow: none; */
     box-shadow: 12px -8px 4px rgba(0,0,0,0.8);
     border-radius: 3px;
     height: 6vh;
@@ -113,9 +94,7 @@
     font-size: 1vw;
     font-weight: 700;
     }
-}
 
-@media(min-width:750px){
     .login-footer{
     margin-top: 5vh;
     font-size: 12px;

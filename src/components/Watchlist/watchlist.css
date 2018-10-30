@@ -1,10 +1,32 @@
-.Watchlist{
-    height: 178vh;
-    /* width: 200%; */
-    background-image: linear-gradient(0deg,grey 30%,black);
-}
 
+    .Watchlist{
+    height: 178vh;    
+    background-image: linear-gradient(0deg,grey 30%,black);
+    }
+
+    .watchlist-heading{
+        padding-top: .25vh;
+        padding-bottom: .1vh;
+        background-image: linear-gradient(180deg,grey 15%,black);  
+        /* color: rgba(255, 0, 0, 0.616);         */
+        color: silver;
+        /* color: rgb(0 202 0); */
+        text-shadow: 2px 2px black;
+        }
+
+        .tabs{
+            background-color: black;
+        }
+
+        .tab-button.active{
+            background-color: black;
+            color: white;
+        }
+
+/* @media(min-width:750px){
 .watchlist-heading{
-    /* width: 200%; */
-    background-image: linear-gradient(0deg,grey 30%,black);   
-}
+    background-image: linear-gradient(90deg, rgb(121, 2, 2),black 50%, rgb(0 110 0));   
+    color: silver;
+    }
+} */
+

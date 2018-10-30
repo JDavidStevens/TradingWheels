@@ -1,3 +1,55 @@
 .Navbar{
-    background-color: mediumspringgreen
+    display: flex;
+    justify-content: space-between;
+    /* background-image: linear-gradient(90deg, rgb(121, 2, 2),black 50%, rgb(0 110 0)); */
+    background-image: linear-gradient(0deg,grey 1%,black);
+    height: 4vh;
+}
+
+.navbar-title{
+    margin: 1vh 2vw 1vh 2vw;
+    text-shadow: 2px 2px black;
+    /* text-shadow: 2px 2px #ff0000; */
+    font-size: 4vh;
+    word-wrap:break-word;
+    color: rgb(0 202 0)
+    /* color: silver; */
+}
+
+.logout-button{
+    height: 4vh;
+    margin: 1.75vh 1vw 0 0;
+    background-color: silver;
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+@media(min-width:750px){
+
+
+.logout-button:hover{
+    cursor: pointer;
+}
+.Navbar{
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(0deg,grey 10%,black);
+    height: 4vh;
+}
+
+.navbar-title{
+    margin: 1vh 0 1vh 2vw;
+    font-size: 4vh;
+    word-wrap:break-word;
+    color: rgb(0 202 0)
+}
+
+.logout-button{
+    height: 3vh;
+    width: 4vw;
+    margin: 1.75vh 1vh 0 0;
+    background-color: silver;
+    font-weight: 700;
+    border-radius: 3px;
+}
 }

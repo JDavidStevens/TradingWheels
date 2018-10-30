@@ -45,10 +45,10 @@ class Watchlist extends Component {
       <div className="watchlist-heading">
         {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
         </div>
-        <div>
-          <button onClick={() => this.props.updateTab('owned')}>Owned</button>
-          <button onClick={() => this.props.updateTab('non-owned')}>Non-Owned</button>
-          <button onClick={() => this.props.updateTab('pending')}>Pending Orders</button>
+        <div className="tabs">
+          <button className="tab-button" onClick={() => this.props.updateTab('owned')}>Owned</button>
+          <button className="tab-button" onClick={() => this.props.updateTab('non-owned')}>Non-Owned</button>
+          <button className="tab-button" onClick={() => this.props.updateTab('pending')}>Pending Orders</button>
         </div>
         <div>
           {(this.props.tab === "owned") ? (<Owned/>) : (this.props.tab==="non-owned")?(<NonOwned/>):(<Pending/>)}

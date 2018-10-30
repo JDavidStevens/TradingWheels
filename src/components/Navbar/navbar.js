@@ -6,7 +6,8 @@ class Navbar extends Component {
   render() {
     return (
       <div className= "Navbar">
-        Navbar
+        <h1 className="navbar-title" >Trading Wheels</h1>
+        <button className="logout-button">Logout</button>
       </div>
     );
   }
