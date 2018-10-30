@@ -49,10 +49,8 @@ class NonOwned extends Component {
               </Popup>
             </Td>
             <Td className="nonowned-Td-remove">
-              {/* <div> */}
                 <button className="remove" onClick={() => this.handleRemove(element.id)}
                 >Remove</button>
-              {/* </div> */}
             </Td>
           </Tr>
         </Tbody>
@@ -72,7 +70,7 @@ class NonOwned extends Component {
               <Th className="nonowned-th">Change</Th>
               <Media
                 query="(min-width: 750px)"
-                render={() => <Th className="nonowned-th" colspan="2">Action</Th>} />
+                render={() => <Th className="nonowned-th" colSpan="2">Action</Th>} />
             </Tr>
           </Thead>
           {nonOwnedStockList}

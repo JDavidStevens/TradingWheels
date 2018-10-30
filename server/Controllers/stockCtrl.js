@@ -88,8 +88,8 @@ module.exports = {
     sellAll: (req, res) => {
         const dbInstance = req.app.get('db');
         dbInstance.sellAll([req.params.id])
-            .then(() => {
-                res.sendStatus(200)
+            .then((stocks) => {
+                res.status(200).redirect('/#/list')
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);

@@ -1,0 +1,37 @@
+.trade-nonowned-confirm{
+    height: 150vh;    
+    background-image: linear-gradient(0deg,grey 10%,black);
+    width: 100%;
+    text-align: inherit;
+}
+
+.confirm-statement-no{
+    color: silver;
+    font-size: 5.5vh;
+    margin: 0;
+    padding-top:15vh;
+}
+
+.stripe-nonowned{
+    margin-top: 6vh;
+}
+
+@media(min-width:750px){
+.trade-nonowned-confirm{
+    text-align:inherit;
+    height: 178vh;    
+    background-image: linear-gradient(0deg,grey 30%,black);
+    width: 100%;
+}
+
+.confirm-statement-no{
+    color: silver;
+    font-size: 8vh;
+    margin: 0;
+    padding-top:15vh;
+}
+
+.stripe-nonowned{
+    margin-top: 6vh;
+}
+}

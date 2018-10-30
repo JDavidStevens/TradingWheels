@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks } from '../../../../ducks/reducer';
+import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks, updateOrderInfo } from '../../../../ducks/reducer';
 import LimitStopNonOwned from './limitStopNonOwned';
+import '../nonowned.css';
 
 
 class TradeNonowned extends Component {
@@ -28,7 +29,7 @@ let basis = parseInt(this.props.tradeQty) * parseInt(this.props.purchasePrice)
 let orderConfirmInfo= [this.props.currentPurchase.symbol,this.props.purchasePrice]
         
         return (
-            <div className="Trade">
+            <div className="trade-nonowned">
                 <h1>{this.props.currentPurchase.symbol}</h1>
                 <form>
                    Purchase Quantity:
@@ -60,5 +61,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-    mapStateToProps, { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks }
+    mapStateToProps, { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks,updateOrderInfo }
 )(TradeNonowned);

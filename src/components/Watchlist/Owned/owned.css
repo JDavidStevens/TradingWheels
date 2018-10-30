@@ -39,6 +39,12 @@
         margin-top:12%;
         font-size: 2vh;
     } 
+
+    .trade-owned{
+        margin:auto;
+        background-color: lightgray;
+        color: black;
+    }
         
 /* ***@media(min-width: 750px)*** */
 @media(min-width:750px){
@@ -88,5 +94,11 @@
 
 .watchlist-footer{
     margin-top:29%;
+}
+
+.trade-owned{
+    margin:auto;
+    background-color: lightgray;
+    color: black;
 }
 } 

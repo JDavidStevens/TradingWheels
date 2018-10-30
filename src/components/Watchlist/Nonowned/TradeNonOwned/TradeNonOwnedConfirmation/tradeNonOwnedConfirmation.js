@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // import {Link} from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import stripe from './stripekey';
+import './tradenonownedconfirmation.css'
 
 class NonownedConfirmation extends Component{
     constructor(props){
@@ -22,10 +23,10 @@ class NonownedConfirmation extends Component{
     render(){
 
     return(
-        <div>
-           <p> Your order to By {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>
+        <div className="trade-nonowned-confirm">
+           <p className="confirm-statement-no"> Your order to Buy {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>
            <div>
-               <StripeCheckout token={this.onToken} stripeKey={stripe.pub_key}
+               <StripeCheckout className="stripe-nonowned" token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
                amount={this.state.finalOwnedTotal*100}/>
            </div>
         </div>

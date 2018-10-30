@@ -31,6 +31,10 @@
         margin-top:12%;
         font-size: 2vh;
     } 
+
+    .no-pending{
+        color: white;
+    }
         
 /* ***@media(min-width: 750px)*** */
 @media(min-width:750px){
@@ -75,4 +79,8 @@
 .watchlist-footer{
     margin-top:29%;
 }
+.no-pending{
+    color: white;
+}
+   
 } 

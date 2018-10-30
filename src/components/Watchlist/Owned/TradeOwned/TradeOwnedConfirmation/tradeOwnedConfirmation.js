@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
+import './tradeownedconfirmation.css';
 // import stripe from '../../../Nonowned/TradeNonOwned/TradeNonOwnedConfirmation/stripekey';
 
 class OwnedConfirmation extends Component{
@@ -22,13 +23,13 @@ class OwnedConfirmation extends Component{
     render(){
         
     return(
-        <div>
-            {this.props.buySell==="Sell All Shares "? <p>Your order to sell all shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>:
-           <p> Your order to {this.props.buySell} {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>}
+        <div className='trade-owned-confirm'>
+            {this.props.buySell==="Sell All Shares "? <p className="confirm-statement">Your order to sell all shares of {this.props.orderInfo[0]} has been submitted.</p>:
+           <p className="confirm-statement"> Your order to {this.props.buySell} {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>}
            <div>
-               {this.props.buySell==="Buy "?<StripeCheckout token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
+               {this.props.buySell==="Buy "?<StripeCheckout className="stripe-owned" token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
                amount={this.state.finalOwnedTotal*100}/>:
-               <Link to='/list'>Return to My Homepage</Link>}
+               <Link className="homepage-link" to='/list'>Return to My Homepage</Link>}
            </div>
         </div>
     )

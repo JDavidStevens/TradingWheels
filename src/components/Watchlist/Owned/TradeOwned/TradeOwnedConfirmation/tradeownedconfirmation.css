@@ -1,0 +1,43 @@
+.trade-owned-confirm{
+    height: 150vh;    
+    background-image: linear-gradient(0deg,grey 10%,black);
+    width: 100%;
+    text-align: inherit;
+}
+
+.confirm-statement{
+    color: silver;
+    font-size: 5.5vh;
+    margin: 0;
+    padding-top:15vh;
+}
+
+.homepage-link{
+    font-size: 2.5vh;
+    color: rgb(0 202 0);
+}
+
+@media(min-width:750px){
+.trade-owned-confirm{
+    text-align:inherit;
+    height: 178vh;    
+    background-image: linear-gradient(0deg,grey 30%,black);
+    width: 100%;
+}
+
+.confirm-statement{
+    color: silver;
+    font-size: 8vh;
+    margin: 0;
+    padding-top:15vh;
+}
+
+.homepage-link{
+    font-size: 3vh;
+    color: rgb(0 202 0);
+}
+
+.stripe-owned{
+    margin-top: 6vh;
+}
+}

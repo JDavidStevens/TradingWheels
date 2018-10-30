@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateBuySell, updateTradeQty, updateOrderType, updateMyStocks,updateOrderInfo } from '../../../../ducks/reducer';
 import LimitStopOwned from './limitStopOwned';
 import {Link} from 'react-router-dom';
+import '../owned.css';
 
 
 class TradeOwned extends Component {
@@ -31,7 +32,7 @@ class TradeOwned extends Component {
     render() {
 
         let sum = parseInt(this.props.tradeQty)+parseInt(this.props.currentTrade.shares);
-        console.log("sum",sum)
+        
         let addShares = parseInt(this.props.tradeQty)*parseInt(this.props.currentPrice)+parseInt(this.props.currentTrade.purchase_price);
         
 
@@ -41,8 +42,8 @@ class TradeOwned extends Component {
         let orderConfirmInfo= [this.props.currentTrade.symbol,this.props.currentPrice]
 
         return (
-            <div className="Trade">
-                <h1>{this.props.currentTrade.symbol}</h1>
+            <div className="trade-owned">
+                <h1 className="owned-current-trade-symbol">{this.props.currentTrade.symbol}</h1>
                 <form>
                     Buy/Sell:
             <br />
@@ -54,7 +55,7 @@ class TradeOwned extends Component {
                     </select>
                     <br />
                     Quantity:
-                        {this.props.buySell === "Sell All Shares " ? (<h5>{this.props.currentTrade.shares} Shares</h5>) : (
+                        {this.props.buySell === "Sell All Shares " ? (<h5 className="owned-sell-all">{this.props.currentTrade.shares} Shares</h5>) : (
                         <input placeholder="Shares" onChange={e => this.props.updateTradeQty(e.target.value)} />
                     )}
                     Order Type:

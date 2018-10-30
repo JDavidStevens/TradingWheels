@@ -35,7 +35,7 @@ class Owned extends Component {
             {capital >= 0 ?
               <Td className="owned-table-positive">{capital} </Td> : <Td className="owned-table-negative">{capital}</Td>}
             <Td className="owned-Td">{currentTotal}</Td>
-            <Td className="owned-Td"><Popup trigger={<button className="buy-sell-button">Buy More/Sell</button>}>
+            <Td className="owned-Td"><Popup className="pop-up" trigger={<button className="buy-sell-button">Buy More/Sell</button>}>
               <TradeOwned currentTrade={element} currentPrice={this.props.quotes[element.symbol].quote.latestPrice}/>
             </Popup></Td>
           </Tr>

@@ -65,7 +65,7 @@ console.log("pendpage",this.props.pending)
             <div className="Watchlist">
                 <div>
                 <h3 className="pending-purchase-title">Pending Purchases</h3>
-                {pendingBuyList!==null?
+                {pendingBuyList[0]?
                 <Table className="pending-table">
                     <Thead className="pending-thead">
                         <Tr className="pending-tr">
@@ -79,11 +79,11 @@ console.log("pendpage",this.props.pending)
                         </Tr>
                     </Thead>
                     {pendingBuyList}
-                </Table>:<p>No pending purchases at this time</p>}
+                </Table>:<p className="no-pending">No pending purchases at this time</p>}
                 </div>
                 <div>
                 <h3 className="pending-sales-title">Pending Sales</h3>
-                {pendingSaleList!==null?
+                {pendingSaleList[0]?
                 <Table className="pending-table">
                     <Thead>
                         <Tr className="pending-tr">
@@ -97,7 +97,7 @@ console.log("pendpage",this.props.pending)
                         </Tr>
                     </Thead>
                     {pendingSaleList}
-                </Table>:<p>No pending sales at this time</p>}
+                </Table>:<p className="no-pending">No pending sales at this time</p>}
                 </div>
                 <div>
                 <footer className="watchlist-footer">
