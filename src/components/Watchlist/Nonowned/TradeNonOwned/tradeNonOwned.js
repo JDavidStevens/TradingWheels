@@ -43,7 +43,7 @@ let orderConfirmInfo= [this.props.currentPurchase.symbol,this.props.purchasePric
                     </select>
                     <br /><br />
                     {(this.props.orderType === "trigger")
-                        ? (<LimitStopNonOwned nonOwnedTrigger={this.props.currentPurchase} currentPriceNonOwned={this.props.purchasePrice}/>) : (this.props.orderType=== "Buy ")
+                        ? (<LimitStopNonOwned orderConfirmInfo={orderConfirmInfo} nonOwnedTrigger={this.props.currentPurchase} currentPriceNonOwned={this.props.purchasePrice}/>) : (this.props.orderType=== "Buy ")
                                 ? (<Link to='/nconfirm' onClick={()=>this.props.updateOrderInfo(orderConfirmInfo)}><input type="submit" onClick={() => this.handleNewPurchase(this.props.currentPurchase.id,this.props.currentPurchase.stock_name,this.props.currentPurchase.symbol,this.props.tradeQty,basis)} /></Link>):(null) }
                 </form>
             </div>

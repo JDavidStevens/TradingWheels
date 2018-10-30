@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
-import stripe from './stripekey';
+// import stripe from './stripekey';
 import './tradenonownedconfirmation.css'
 
 class NonownedConfirmation extends Component{
@@ -24,11 +24,17 @@ class NonownedConfirmation extends Component{
 
     return(
         <div className="trade-nonowned-confirm">
+        {(this.props.orderType ==="trigger")?(<div><p className="confirm-statement-no">Your order to Buy {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted.</p> 
+        <Link className="homepage-link" to='/list'>Return to My Homepage</Link>
+        </div>):(
+        <div>
            <p className="confirm-statement-no"> Your order to Buy {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>
            <div>
                <StripeCheckout className="stripe-nonowned" token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
                amount={this.state.finalOwnedTotal*100}/>
            </div>
+           </div>)
+        }
         </div>
     )
     }
@@ -37,11 +43,12 @@ class NonownedConfirmation extends Component{
 
 
 function mapStateToProps(state) {
-    const {orderInfo,buySell,tradeQty } = state;
+    const {orderInfo,buySell,tradeQty,orderType } = state;
     return {
         orderInfo,
         buySell,
-        tradeQty
+        tradeQty,
+        orderType
     }
 }
 

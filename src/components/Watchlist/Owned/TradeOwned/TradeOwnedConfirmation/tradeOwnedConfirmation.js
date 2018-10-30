@@ -27,7 +27,7 @@ class OwnedConfirmation extends Component{
             {this.props.buySell==="Sell All Shares "? <p className="confirm-statement">Your order to sell all shares of {this.props.orderInfo[0]} has been submitted.</p>:
            <p className="confirm-statement"> Your order to {this.props.buySell} {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>}
            <div>
-               {this.props.buySell==="Buy "?<StripeCheckout className="stripe-owned" token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
+               {this.props.buySell==="Buy " && this.props.orderType !=="trigger"?<StripeCheckout className="stripe-owned" token={this.onToken} stripeKey='pk_test_jwGtWQMpsyUYQMo7GcDUsAPr'
                amount={this.state.finalOwnedTotal*100}/>:
                <Link className="homepage-link" to='/list'>Return to My Homepage</Link>}
            </div>
@@ -39,11 +39,12 @@ class OwnedConfirmation extends Component{
 
 
 function mapStateToProps(state) {
-    const {orderInfo,buySell,tradeQty } = state;
+    const {orderInfo,buySell,tradeQty,orderType } = state;
     return {
         orderInfo,
         buySell,
-        tradeQty
+        tradeQty,
+        orderType
     }
 }
 

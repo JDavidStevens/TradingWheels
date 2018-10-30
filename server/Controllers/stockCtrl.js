@@ -89,7 +89,7 @@ module.exports = {
         const dbInstance = req.app.get('db');
         dbInstance.sellAll([req.params.id])
             .then((stocks) => {
-                res.status(200).redirect('/#/list')
+                res.status(200).send(stocks)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);
@@ -99,10 +99,9 @@ module.exports = {
     addPending: (req, res) => {
         const dbInstance = req.app.get('db');
         const { company, symbol, qty, triggerPrice, type, tradeType } = req.body;
-        console.log("req.body", req.body)
         dbInstance.addPending([company, symbol, qty, triggerPrice, type, tradeType])
-            .then(() => {
-                res.sendStatus(200)
+            .then((stocks) => {
+                res.status(200).send(stocks)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);

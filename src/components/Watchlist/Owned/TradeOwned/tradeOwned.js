@@ -14,13 +14,12 @@ class TradeOwned extends Component {
         this.handleTradeShares = this.handleTradeShares.bind(this);
     }
 
-    handleSellAll(id) {
-        axios.delete(`/api/sellall/${id}`)
-        console.log("id",id)
-    //         .then(() => {
-    //             this.props.history.push('/confirmation')
-    //         })
-    }
+    
+
+handleSellAll(id) {
+    axios.delete(`/api/sellall/${id}`).then(res=>{
+        this.props.updateMyStocks(res.data);
+    })}
 
     handleTradeShares(id,qty,price){
         axios.put(`/api/shares/${id}`,{qty,price})
@@ -30,6 +29,8 @@ class TradeOwned extends Component {
     }
 
     render() {
+
+        console.log("quote",this.props.quotes)
 
         let sum = parseInt(this.props.tradeQty)+parseInt(this.props.currentTrade.shares);
         
