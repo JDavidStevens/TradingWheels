@@ -1,10 +1,6 @@
-    /* .Watchlist{
-        width: 100%;
-        background-image: linear-gradient(0deg,grey 25%,black);
-    } */
-
-    .pending-purchase-title{
+   .pending-purchase-title{
         color: silver;
+        margin-top: 0;
     }
 
     .pending-sales-title{
@@ -73,6 +69,7 @@
 
 .pending-cancel-button:hover{
     cursor: pointer;
+    color:white;
 }
 
 .watchlist-footer{

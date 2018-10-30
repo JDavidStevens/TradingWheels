@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
-import stripe from '../../../Nonowned/TradeNonOwned/TradeNonOwnedConfirmation/stripekey';
+// import stripe from '../../../Nonowned/TradeNonOwned/TradeNonOwnedConfirmation/stripekey';
 
 class OwnedConfirmation extends Component{
     constructor(props){

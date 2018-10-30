@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab} from '../../ducks/reducer';
+import { updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab } from '../../ducks/reducer';
 import axios from 'axios';
 import NonOwned from './Nonowned/nonowned';
 import Owned from './Owned/owned';
@@ -13,37 +13,37 @@ import './watchlist.css';
 class Watchlist extends Component {
 
   async componentDidMount() {
-    
+
     const myRes = await axios.get('/api/myStocks')
     let filteredTicker = myRes.data.map(element => element.symbol)
-    
+
     const res = await axios.get('/api/nonowned')
     let filteredSymbols = res.data.map(element => element.symbol)
 
-    const resp= await axios.get('/api/pending')
-    let filterPendingSymbols = resp.data.map(element=>element.symbol)
+    const resp = await axios.get('/api/pending')
+    let filterPendingSymbols = resp.data.map(element => element.symbol)
 
     let allSymbols = filteredTicker.concat(filteredSymbols).concat(filterPendingSymbols);
-    
+
 
     const myResponse = await axios.get(`https://api.iextrading.com/1.0/stock/market/batch?symbols=${allSymbols}&types=quote`)
-    
+
     this.props.updateQuotes(myResponse.data);
     this.props.updateMyStocks(myRes.data);
     this.props.updateNonOwnedStocks(res.data);
     this.props.updatePending(resp.data);
-    }
+  }
 
 
   render() {
 
     return (
       <div className="Watchlist">
-      <div><Navbar/></div>
+        <div><Navbar /></div>
 
-      {/* ternary to allow time for state to update and return info so code does not break */}
-      <div className="watchlist-heading">
-        {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
+        {/* ternary to allow time for state to update and return info so code does not break */}
+        <div className="watchlist-heading">
+          {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
         </div>
         <div className="tabs">
           <button className="tab-button" onClick={() => this.props.updateTab('owned')}>Owned</button>
@@ -51,7 +51,7 @@ class Watchlist extends Component {
           <button className="tab-button" onClick={() => this.props.updateTab('pending')}>Pending Orders</button>
         </div>
         <div>
-          {(this.props.tab === "owned") ? (<Owned/>) : (this.props.tab==="non-owned")?(<NonOwned/>):(<Pending/>)}
+          {(this.props.tab === "owned") ? (<Owned/>) : (this.props.tab === "non-owned") ? (<NonOwned/>) : (<Pending/>)}
         </div>
       </div>
     );
