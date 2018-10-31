@@ -2,7 +2,7 @@ module.exports = {
     myStocks: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.mystocks()
+        dbInstance.mystocks(req.session.user.id)
             .then(stocks => {
                 res.status(200).send(stocks)
             }).catch(err => {
@@ -14,7 +14,7 @@ module.exports = {
     nonowned: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.nonowned()
+        dbInstance.nonowned(req.session.user.id)
             .then(stocks => {
                 res.status(200).send(stocks)
             }).catch(err => {
@@ -26,7 +26,7 @@ module.exports = {
     pending: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.pending()
+        dbInstance.pending(req.session.user.id)
             .then(stocks => {
                 res.status(200).send(stocks)
                 // console.log("getPending",stocks)
@@ -39,7 +39,7 @@ module.exports = {
     newPurchase: (req, res) => {
         const dbInstance = req.app.get('db');
         const { name, symbol, qty, basis } = req.body;
-        dbInstance.purchase([name, symbol, qty, basis])
+        dbInstance.purchase([req.session.user.id,name, symbol, qty, basis])
             .then(() => {
                 res.sendStatus(200)
             }).catch(err => {
@@ -51,7 +51,7 @@ module.exports = {
     addNonowned: (req, res) => {
         const dbInstance = req.app.get('db');
         const { addCompany, addSymbol } = req.body;
-        dbInstance.addNonowned([addCompany, addSymbol])
+        dbInstance.addNonowned([req.session.user.id,addCompany, addSymbol])
             // console.log("add", req.body.addCompany)
             .then((stocks) => {
                 res.status(200).send(stocks)
@@ -99,7 +99,7 @@ module.exports = {
     addPending: (req, res) => {
         const dbInstance = req.app.get('db');
         const { company, symbol, qty, triggerPrice, type, tradeType } = req.body;
-        dbInstance.addPending([company, symbol, qty, triggerPrice, type, tradeType])
+        dbInstance.addPending([req.session.user.id,company, symbol, qty, triggerPrice, type, tradeType])
             .then((stocks) => {
                 res.status(200).send(stocks)
             }).catch(err => {

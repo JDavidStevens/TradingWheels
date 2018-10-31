@@ -37,10 +37,6 @@
     background-color: black;
     box-shadow: 12px -8px 4px rgba(0,0,0,0.5);
     border-radius: 3px;
-}
-
-.login-link{
-    text-decoration: none;
     color: silver;
 }
 
@@ -93,6 +89,11 @@
     width: 9vw;
     font-size: 1vw;
     font-weight: 700;
+    color:silver;
+    }
+
+    .login-button:hover{
+        cursor: pointer;
     }
 
     .login-footer{

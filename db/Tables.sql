@@ -1,9 +1,8 @@
 Create table investors(
 id serial primary key,
-username varchar(25),
-password varchar(25),
-first_name varchar(50),
-last_name varchar(75)
+auth_id text,
+customer_email text,
+customer_name varchar(180)
 )
 
 Create table owned_stock(

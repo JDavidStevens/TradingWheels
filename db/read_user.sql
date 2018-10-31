@@ -1,0 +1,1 @@
+Select * from investors where auth_id=$1;

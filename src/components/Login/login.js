@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Fade } from 'react-slideshow-image';
 import Media from 'react-media';
 import './login.css';
@@ -17,6 +17,8 @@ class Login extends Component {
       symbols: ['spy', 'oneq', 'dia'],
       company: []
     }
+
+    this.login=this.login.bind(this);
   }
 
 
@@ -25,6 +27,13 @@ class Login extends Component {
       console.log("response", response.data)
       this.setState({ spy: response.data.SPY.quote.changePercent, dia: response.data.DIA.quote.changePercent, oneq: response.data.ONEQ.quote.changePercent })
     })
+  }
+
+  login(){
+    let {REACT_APP_DOMAIN,REACT_APP_CLIENT_ID}=process.env;
+    let uri = `${encodeURIComponent(window.location.origin)}/auth/callback`
+    
+    window.location=`https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${uri}&response_type=code`
   }
 
   render() {
@@ -94,9 +103,7 @@ class Login extends Component {
         </div>
         
         <div>
-          <button className="login-button">
-          <Link to='/list' className="login-link">Login/Register</Link>
-          </button>
+          <button className="login-button" onClick={this.login}>Login/Register</button>
         </div>
         <footer className="login-footer">
           Data provided for free by <a href="https://iextrading.com/developer">IEX</a><br/>  View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>

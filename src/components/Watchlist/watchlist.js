@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab } from '../../ducks/reducer';
+import { updateUser, updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab } from '../../ducks/reducer';
 import axios from 'axios';
 import NonOwned from './Nonowned/nonowned';
 import Owned from './Owned/owned';
 import Pending from './Pending/pending';
 import Navbar from '../Navbar/navbar';
-
 import './watchlist.css';
 
 
 class Watchlist extends Component {
 
   async componentDidMount() {
+
+    const session= axios.get("/api/user-data");
+    this.props.updateUser(session.data)
+    
 
     const myRes = await axios.get('/api/myStocks')
     let filteredTicker = myRes.data.map(element => element.symbol)
@@ -36,14 +39,14 @@ class Watchlist extends Component {
 
 
   render() {
-
+console.log("name",this.props.myStocks)
     return (
       <div className="Watchlist">
         <div><Navbar /></div>
 
         {/* ternary to allow time for state to update and return info so code does not break */}
         <div className="watchlist-heading">
-          {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].firstname}!</h1> : ''}
+          {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].customer_name}!</h1> : ''}
         </div>
         <div className="tabs">
           <button className="tab-button" onClick={() => this.props.updateTab('owned')}>Owned</button>
@@ -68,5 +71,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab }
+  { updateUser, updateMyStocks, updateNonOwnedStocks, updatePending, updateQuotes, updateTab }
 )(Watchlist);

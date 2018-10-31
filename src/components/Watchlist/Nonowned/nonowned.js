@@ -38,7 +38,6 @@ class NonOwned extends Component {
     this.props.updateMyStocks(myRes.data);
     this.props.updateNonOwnedStocks(res.data);
     this.props.updatePending(resp.data);
-
   }
 
   async handleRemove(id) {

@@ -1,2 +1,2 @@
-Insert into owned_stock(stock_name,symbol,shares,purchase_price,user_id)
-Values($1,$2,$3,$4,1);
+Insert into owned_stock(user_id,stock_name,symbol,shares,purchase_price)
+Values($1,$2,$3,$4,$5);

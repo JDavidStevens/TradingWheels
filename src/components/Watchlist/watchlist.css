@@ -5,29 +5,26 @@
     }
 
     .watchlist-heading{
-        padding-top: .25vh;
+        padding-top: 2vh;
         padding-bottom: .1vh;
         background-image: linear-gradient(180deg,grey 15%,black); 
         color: silver;
         text-shadow: 2px 2px black;
+        font-size: 50%;
         }
 
         .tabs{
             background-color: black;
         }
 
-        .active-tab{
-            background-color: black;
-            color: white;
-        }
-
 @media(min-width:750px){
     .tabs{
-            background-color: black;
             display: flex;
-            margin-left: 3.75vw;
+            padding-left: 3.75vw;
         }
     .tab-button{
+        
+        margin-bottom: 1vh;
         border-radius: 2px;
         background-color: silver;
     }
@@ -36,6 +33,14 @@
         background-color: black;
         color: white;
     }
+    .watchlist-heading{
+        padding-top: 4vh;
+        padding-bottom: .5vh;
+        background-image: linear-gradient(180deg,grey 15%,black); 
+        color: silver;
+        text-shadow: 3px -1px black;
+        font-size: 75%;
+        }
 
     }
 

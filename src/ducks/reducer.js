@@ -1,4 +1,5 @@
 const initialState = {
+    user: {},
     myStocks: [],
     myQuotes: {},
     nonOwnedStocks: [],
@@ -18,6 +19,7 @@ const initialState = {
 
 
 //////Action Types/////
+const UPDATE_USER= "UPDATE_USER";
 const UPDATE_MY_STOCKS = "UPDATE_MY_STOCKS";
 const UPDATE_NONOWNEDSTOCKS = "UPDATE_NONOWNEDSTOCKS";
 const UPDATE_PENDING = "UPDATE_PENDING";
@@ -37,7 +39,8 @@ const UPDATE_ORDER_INFO = "UPDATE_ORDER_INFO";
 /////Switch/////
 function reducer(state = initialState, action) {
     switch (action.type) {
-
+        case UPDATE_USER:
+            return Object.assign({},state,{user:action.payload})
         case UPDATE_MY_STOCKS:
             return Object.assign({}, state, { myStocks: action.payload });
         case UPDATE_NONOWNEDSTOCKS:
@@ -77,6 +80,12 @@ function reducer(state = initialState, action) {
 }
 
 //Action Creators
+export function updateUser(data){
+    return {
+        type: UPDATE_USER,
+        payload: data
+    }
+}
 
 export function updateMyStocks(myStocks) {
     return {
