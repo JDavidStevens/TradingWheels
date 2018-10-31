@@ -24,6 +24,9 @@ class OwnedConfirmation extends Component{
         
     return(
         <div className='trade-owned-confirm'>
+        <ul className="checkmark">
+        <li></li>
+        </ul>
             {this.props.buySell==="Sell All Shares "? <p className="confirm-statement">Your order to sell all shares of {this.props.orderInfo[0]} has been submitted.</p>:
            <p className="confirm-statement"> Your order to {this.props.buySell} {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted. Your total is ${this.state.finalOwnedTotal}.</p>}
            <div>

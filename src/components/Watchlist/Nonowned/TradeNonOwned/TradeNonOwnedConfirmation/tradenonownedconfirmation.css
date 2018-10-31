@@ -24,6 +24,36 @@
     width: 100%;
 }
 
+ul.checkmark li:before{
+    background-color: rgb(0 202 0);
+    font-size: 100px;
+    content:'';
+    display: block;
+    border: solid .8em rgb(0 202 0); 
+    border-radius: 1000px;
+    height: 30%;
+    width: 15%;
+    position: absolute;
+    left: 38%;
+    top: 10%;
+    margin-top: -3vh;
+}
+
+ul.checkmark li:after{
+    content: '';
+    display: block;
+    width: 12vw;
+    height: 14vh;
+    border: solid white;
+    border-width: 0 4em 4em 0;
+    position: absolute;
+    left: 42%;
+    margin-top: 6%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(49deg);
+}
 .confirm-statement-no{
     color: silver;
     font-size: 8vh;

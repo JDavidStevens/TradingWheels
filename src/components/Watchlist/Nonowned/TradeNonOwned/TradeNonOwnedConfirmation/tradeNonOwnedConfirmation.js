@@ -24,6 +24,9 @@ class NonownedConfirmation extends Component{
 
     return(
         <div className="trade-nonowned-confirm">
+        <ul className="checkmark">
+        <li></li>
+        </ul>
         {(this.props.orderType ==="trigger")?(<div><p className="confirm-statement-no">Your order to Buy {this.props.tradeQty} shares of {this.props.orderInfo[0]} has been submitted.</p> 
         <Link className="homepage-link" to='/list'>Return to My Homepage</Link>
         </div>):(
