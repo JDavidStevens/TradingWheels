@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Zoom } from 'react-slideshow-image';
+import { Fade } from 'react-slideshow-image';
 import Media from 'react-media';
 import './login.css';
 
@@ -29,18 +29,19 @@ class Login extends Component {
 
   render() {
 
-    const fadeImages = ['https://d1qq9lwf5ow8iz.cloudfront.net/live-images-1/ImageDetail_7d2ca19d-c58f-4e6c-a07e-f6eb1682be2f_Large', 'https://mylifeasjulia945.files.wordpress.com/2017/05/0218171041b-1.jpg', 'https://www.nyse.com/publicdocs/images/NYSE_ExchangeData_RealTime_media_tile.jpg'];
+    const fadeImages = ['https://s3-us-west-1.amazonaws.com/tradingwheelsinvestments/WallSt.jpg', 'https://s3-us-west-1.amazonaws.com/tradingwheelsinvestments/Bull.jpg', 'https://s3-us-west-1.amazonaws.com/tradingwheelsinvestments/NYSE.jpg'];
 
     const fadeProperties = {
       duration: 3000,
-      transitionDuration: 500,
+      transitionDuration: 900,
       infite: true,
+      indicators: false,
       arrows: false
     }
 
     const Slideshow = () => {
       return (
-        <Zoom {...fadeProperties}>
+        <Fade {...fadeProperties}>
           <div className='each-fade'>
             <div className="image-container">
               <img src={fadeImages[0]} alt=''/>
@@ -56,7 +57,7 @@ class Login extends Component {
               <img src={fadeImages[2]} alt=''/>
             </div>
           </div>
-        </Zoom>
+        </Fade>
       )
     }
     function percent(num) {
@@ -72,6 +73,7 @@ class Login extends Component {
       <div className="login-content">
         <h1 className="login-title">Trading Wheels</h1>
         <table className="centered">
+        <tbody>
           <tr className="login-quote-titles">
             <th>S&P 500</th>
             <th>NASDAQ</th>
@@ -82,6 +84,7 @@ class Login extends Component {
             {percent(this.state.oneq) >= 0 ? <td className="positive">{percent(this.state.oneq)}%</td> : <td className="negative">{percent(this.state.oneq)}%</td>}
             {percent(this.state.dia) >= 0 ? <td className="positive">{percent(this.state.dia)}%</td> : <td className="negative">{percent(this.state.dia)}%</td>}
           </tr>
+          </tbody>
         </table>
         <div>
           <Media 

@@ -28,13 +28,13 @@ class Pending extends Component {
     this.props.pending.map(element=>{
         if(element.trade_type==="Buy "){
             return buyFilter.push(element)
-        }
+        }else{return null}
     })    
     // console.log("buyFilter",buyFilter)
     this.props.pending.map(element=>{
         if(element.trade_type==="Sell "){
             return sellFilter.push(element)
-        }
+        }else{return null}
     })    
     console.log("sellFilter",sellFilter)
     
