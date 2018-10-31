@@ -64,3 +64,5 @@ app.post('/api/payment', function (req, res, next) {
 app.listen(SERVER_PORT, () => {
     console.log(`Server is listening on port ${SERVER_PORT}`)
 })
+
+// https://appdividend.com/2017/08/11/send-email-in-node-js/ 

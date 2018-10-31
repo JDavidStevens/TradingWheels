@@ -91,7 +91,6 @@ ul.checkmark li:after{
 .confirm-statement{
     color: silver;
     font-size: 5vh;
-    /* margin: 0; */
     padding-top:55vh;
 }
 
@@ -104,3 +103,4 @@ ul.checkmark li:after{
     margin-top: 6vh;
 }
 }
+/* circle w/checkmark info: https://boylesoftware.com/blog/css-checkmark-icon/ */
