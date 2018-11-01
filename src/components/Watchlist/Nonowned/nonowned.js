@@ -20,6 +20,7 @@ class NonOwned extends Component {
     let { addCompany, addSymbol } = this.props;
    axios.post(`/api/add`, { addCompany, addSymbol })
 
+   //change this to a select * from the post
     const res = await axios.get('/api/nonowned')
     let filteredSymbols = res.data.map(element => element.symbol)
 
