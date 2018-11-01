@@ -18,11 +18,11 @@ class NonOwned extends Component {
 
   async handleAddToWatchlist() {
     let { addCompany, addSymbol } = this.props;
-   axios.post(`/api/add`, { addCompany, addSymbol })
+   const updateNonowned= await axios.post(`/api/add`, { addCompany, addSymbol })
 
    //change this to a select * from the post
-    const res = await axios.get('/api/nonowned')
-    let filteredSymbols = res.data.map(element => element.symbol)
+    // const res = await axios.get('/api/nonowned')
+    let filteredSymbols = updateNonowned.data.map(element => element.symbol)
 
     const myRes = await axios.get('/api/myStocks')
     let filteredTicker = myRes.data.map(element => element.symbol)
@@ -37,8 +37,9 @@ class NonOwned extends Component {
 
     this.props.updateQuotes(myResponse.data);
     this.props.updateMyStocks(myRes.data);
-    this.props.updateNonOwnedStocks(res.data);
+    this.props.updateNonOwnedStocks(updateNonowned.data);
     this.props.updatePending(resp.data);
+    this.props.updateTab("non-owned");
   }
 
   async handleRemove(id) {
