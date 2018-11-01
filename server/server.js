@@ -11,6 +11,8 @@ const app = express();
 
 app.use(bodyParser.json())
 
+app.use(express.static(`${__dirname}/../build`));
+
 let {
     SERVER_PORT,
     CONNECTION_STRING,
