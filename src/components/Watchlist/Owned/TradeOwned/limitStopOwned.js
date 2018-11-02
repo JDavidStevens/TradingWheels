@@ -24,7 +24,7 @@ class LimitStopOwned extends Component {
         let { currentPrice } = this.props;
 
         function orderTypeSelector(current, requested, type) {
-            if (type === "Sell " && current <= requested) {
+            if (type === "Sell " || "Sell All Shares " && current <= requested) {
                 return "Limit"
             } else if (type === "Buy " && current >= requested) {
                 return "Limit"
