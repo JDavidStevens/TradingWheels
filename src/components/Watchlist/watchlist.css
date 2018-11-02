@@ -1,10 +1,13 @@
 
-    .Watchlist{
-    height: 178vh;    
-    background-image: linear-gradient(0deg,grey 30%,black);
-    }
-
-    .watchlist-heading{
+  .Watchlist{
+      position: absolute;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    background: linear-gradient(0deg,grey 25%,black);
+}
+  
+  .watchlist-heading{
         padding-top: 2vh;
         padding-bottom: .1vh;
         background-image: linear-gradient(180deg,grey 15%,black); 
@@ -16,8 +19,35 @@
         .tabs{
             background-color: black;
         }
+@media(min-width:700px){
+            .tabs{
+                    display: flex;
+                    padding-left: 3.75vw;
+                    padding-top: 1vh;
+                }
+            .tab-button{
+                
+                margin-bottom: 1vh;
+                border-radius: 2px;
+                background-color: silver;
+            }
+            .tab-button:hover, .tab-button:active, .tab-button:focus{
+                cursor: pointer;
+                background-color: black;
+                color: white;
+            }
+            .watchlist-heading{
+                padding-top: 1vh;
+                padding-bottom: .5vh;
+                background-image: linear-gradient(180deg,grey 15%,black); 
+                color: silver;
+                text-shadow: 3px -1px black;
+                font-size: 75%;
+                }
+        
+            }
 
-@media(min-width:750px){
+@media(min-width:800px){
     .tabs{
             display: flex;
             padding-left: 3.75vw;

@@ -97,7 +97,7 @@ class Login extends Component {
         </table>
         <div>
           <Media 
-          query="(max-width: 749px)"
+          query="(max-width: 699px)"
           render={()=><div>{Slideshow()}</div>}
           />
         </div>

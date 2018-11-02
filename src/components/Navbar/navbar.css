@@ -1,7 +1,6 @@
 .Navbar{
     display: flex;
     justify-content: space-between;
-    /* background-image: linear-gradient(90deg, rgb(121, 2, 2),black 50%, rgb(0 110 0)); */
     background-image: linear-gradient(0deg,grey 1%,black);
     height: 4vh;
 }
@@ -26,7 +25,36 @@
     box-shadow: 4px -5px rgba(0,0,0,0.8); 
 }
 
-@media(min-width:750px){
+@media(min-width:700px){
+    .Navbar{
+        display: flex;
+        justify-content: space-between;
+        background-image: linear-gradient(0deg,gray,black);
+        height: 7vh;
+    }
+    
+    .navbar-title{
+        margin: 1vh 0 1vh 2vw;
+        font-size: 4vh;
+        word-wrap:break-word;
+        color: rgb(0 202 0)
+    }
+    
+    .logout-button{
+        height: 3vh;
+        width: 9vw;
+        margin: 2.5vh 3vw 0 0;
+        background-color: silver;
+        font-weight: 700;
+        border-radius: 3px;
+    }
+    .logout-button:hover{
+        cursor: pointer;
+    }
+}
+
+
+@media(min-width:800px){
     .Navbar{
         display: flex;
         justify-content: space-between;

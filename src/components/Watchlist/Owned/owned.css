@@ -1,10 +1,4 @@
 
-    .Watchlist{
-        width: 100%;
-        background-image: linear-gradient(0deg,grey 25%,black);
-    }
-    
-    
     .owned-table{
         border: 1px solid ;
         margin:auto;
@@ -46,8 +40,62 @@
         color: black;
     }
         
-/* ***@media(min-width: 750px)*** */
-@media(min-width:750px){
+@media(min-width:700px){
+.Watchlist{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(355deg,grey 30%,black);
+}
+
+.owned-table{
+    width:92.5%;
+    border: 1px solid grey;
+    margin:auto;
+}
+
+.owned-th{
+    width: 1vw;
+    border: 1px solid grey;
+    color: lightgray;
+}
+
+.owned-td{
+    width: 1vw;
+    border: 1px solid grey;
+    color: white;
+}
+
+.owned-table-positive{
+    border: 1px solid grey;
+    color: yellowgreen;
+}
+
+.owned-table-negative{
+    border: 1px solid grey;
+    color: red;
+}
+
+.buy-sell-button{
+    background-color: rgb(0 202 0);
+    border-radius: 3px;
+    margin: 1vh .25vw 1vh .25vw;
+}
+
+.buy-sell-button:hover{
+    cursor: pointer;
+}
+
+.watchlist-footer{
+    margin-top:29%;
+}
+
+.trade-owned{
+    margin:auto;
+    background-color: lightgray;
+    color: black;
+}
+} 
+@media(min-width:800px){
 .Watchlist{
     height: 100vh;
     width: 100%;

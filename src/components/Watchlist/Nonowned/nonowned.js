@@ -66,10 +66,19 @@ class NonOwned extends Component {
                 <TradeNonOwned currentPurchase={element} purchasePrice={this.props.quotes[element.symbol].quote.latestPrice} />
               </Popup>
             </Td>
-            <Td className="nonowned-Td-remove">
+            <Media
+            query="(max-width:799px)"
+            render={()=><Td className="nonowned-Td-remove">
+                <button className="remove" onClick={() => this.handleRemove(element.id)}
+                >X</button>
+            </Td>}/>
+            <Media
+            query="(min-width:800px)"
+            render={()=><Td className="nonowned-Td-remove">
                 <button className="remove" onClick={() => this.handleRemove(element.id)}
                 >Remove</button>
-            </Td>
+            </Td>}/>
+            
           </Tr>
         </Tbody>
       )
@@ -87,7 +96,7 @@ class NonOwned extends Component {
               <Th className="nonowned-th">Previous Close</Th>
               <Th className="nonowned-th">Change</Th>
               <Media
-                query="(min-width: 750px)"
+                query="(min-width: 699px)"
                 render={() => <Th className="nonowned-th" colSpan="2">Action</Th>} />
             </Tr>
           </Thead>
