@@ -49,6 +49,10 @@ ul.checkmark li:after{
     color: rgba(0 202 0);
 }
 
+.stripe-owned{
+    margin-top: 6vh;
+}
+
 @media(min-width:750px){
 .trade-owned-confirm{
     text-align:inherit;
@@ -75,17 +79,17 @@ ul.checkmark li:before{
 ul.checkmark li:after{
     content: '';
     display: block;
-    width: 12vw;
-    height: 14vh;
+    width: 6vw;
+    height: 24vh;
     border: solid white;
-    border-width: 0 4em 4em 0;
+    border-width: 0 3.5em 3.5em 0;
     position: absolute;
-    left: 42%;
-    margin-top: 6%;
+    left: 45%;
+    margin-top: 3%;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
-    transform: rotate(49deg);
+    transform: rotate(45deg);
 }
 
 .confirm-statement{
