@@ -46,7 +46,7 @@ console.log("name",this.props.myStocks)
 
         {/* ternary to allow time for state to update and return info so code does not break */}
         <div className="watchlist-heading">
-          {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].customer_name}!</h1> : ''}
+          {this.props.myStocks[0] ? <h1>Hello {this.props.myStocks[0].customer_name}!</h1> : (this.props.myStocks[0]===null)?<h1>Welcome!</h1>:''}
         </div>
         <div className="tabs">
           <button className="tab-button" onClick={() => this.props.updateTab('owned')}>Owned</button>

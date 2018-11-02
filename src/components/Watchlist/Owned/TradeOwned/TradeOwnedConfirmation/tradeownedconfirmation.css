@@ -84,7 +84,7 @@ ul.checkmark li:after{
         border: solid white;
         border-width: 0 3.5em 3.5em 0;
         position: absolute;
-        left: 45%;
+        left: 46%;
         margin-top: 3%;
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
