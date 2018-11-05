@@ -100,8 +100,8 @@ module.exports = {
         const dbInstance = req.app.get('db');
         const { company, symbol, qty, triggerPrice, type, tradeType } = req.body;
         dbInstance.addPending([req.session.user.id,company, symbol, qty, triggerPrice, type, tradeType])
-            .then((stocks) => {
-                res.status(200).send(stocks)
+            .then(() => {
+                res.sendStatus(200)
             }).catch(err => {
                 res.status(500).send({ errorMessage: "Oops! Something went wrong." });
                 console.log(err);

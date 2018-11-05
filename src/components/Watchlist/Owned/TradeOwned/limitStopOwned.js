@@ -14,7 +14,6 @@ class LimitStopOwned extends Component {
 
     handlePendingOrder(company, symbol, qty, triggerPrice, type, tradeType) {
         axios.post('/api/orders', { company, symbol, qty, triggerPrice, type, tradeType })
-
     }
 
 

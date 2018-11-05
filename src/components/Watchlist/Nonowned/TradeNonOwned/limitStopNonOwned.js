@@ -11,11 +11,9 @@ class LimitStopNonOwned extends Component {
         this.handlePendingOrder = this.handlePendingOrder.bind(this);
     }
 
-    handlePendingOrder(id, company, symbol, qty, triggerPrice, type, tradeType) {
-        axios.post('/api/orders', { company, symbol, qty, triggerPrice, type, tradeType }).then(
-            axios.delete(`/api/remove/${id}`)
-        )
-
+    async handlePendingOrder(id, company, symbol, qty, triggerPrice, type, tradeType) {
+       await axios.post('/api/orders', { company, symbol, qty, triggerPrice, type, tradeType })
+       await axios.delete(`/api/remove/${id}`)
     }
 
     render() {

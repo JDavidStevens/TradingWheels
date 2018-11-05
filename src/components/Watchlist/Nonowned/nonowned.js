@@ -32,14 +32,13 @@ class NonOwned extends Component {
 
     let allSymbols = filteredTicker.concat(filteredSymbols).concat(filterPendingSymbols);
 
-
     const myResponse = await axios.get(`https://api.iextrading.com/1.0/stock/market/batch?symbols=${allSymbols}&types=quote`)
 
+    this.props.updateTab("non-owned");
     this.props.updateQuotes(myResponse.data);
     this.props.updateMyStocks(myRes.data);
     this.props.updateNonOwnedStocks(updateNonowned.data);
     this.props.updatePending(resp.data);
-    this.props.updateTab("non-owned");
   }
 
   async handleRemove(id) {
