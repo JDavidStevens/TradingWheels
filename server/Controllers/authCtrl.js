@@ -30,6 +30,18 @@ module.exports={
         }
     },
 
+guest: async(req,res)=>{
+    console.log('guest',req.body)
+    const db=req.app.get('db');
+    let {sub,email,name}=req.body;
+    let foundUser = await db.read_user([sub]);
+    if(foundUser[0]){
+        console.log('foundguest',foundUser[0])
+        req.session.user=foundUser[0]
+        res.status(200).send()
+    }
+},
+
     logout: (req,res)=>{
         req.session.destroy();
         res.redirect('/#/')

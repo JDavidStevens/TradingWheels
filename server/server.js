@@ -1,15 +1,18 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const authCtrl = require('./Controllers/authCtrl');
 const stockCtrl = require('./Controllers/stockCtrl');
+const stripe = require('stripe')(process.env.REACT_APP_STRIPEKEY);
 
 
 const app = express();
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use(express.static(`${__dirname}/../build`));
 
@@ -47,19 +50,53 @@ app.delete('/api/cancel/:id', stockCtrl.cancelOrder)
 //////////auth endpoints//////////
 app.get('/auth/callback', authCtrl.authCallBack)
 app.post('/api/auth/logout', authCtrl.logout)
+app.post(`/api/guest/login`,authCtrl.guest)
 
 //////////session endpoint///////
-app.get('/api/user-data', (req,res)=>{
-    if(req.session.user){
+app.get('/api/user-data', (req, res) => {
+    if (req.session.user) {
         res.status(200).send(req.session.user)
-    }else{
+    } else {
         res.status(401).send("Please log in. Thank you!")
     }
 })
 
 //Stripe endpoint
+
+
+
 app.post('/api/payment', function (req, res, next) {
-    res.redirect('/#/list')
+    console.log("payment", req.body.amount)
+    const amountArray = req.body.amount.toString().split('');
+    const pennies = [];
+    for (var i = 0; i < amountArray.length; i++) {
+        if (amountArray[i] === ".") {
+            if (typeof amountArray[i + 1] === "string") {
+                pennies.push(amountArray[i + 1]);
+            } else {
+                pennies.push("0");
+            }
+            if (typeof amountArray[i + 2] === "string") {
+                pennies.push(amountArray[i + 2]);
+            } else {
+                pennies.push("0");
+            }
+            break;
+        } else {
+            pennies.push(amountArray[i])
+        }
+    }
+    const convertedAmt = parseInt(pennies.join(''));
+    console.log("charge",stripe.charges)
+    const charge = stripe.charges.create({
+        amount: convertedAmt,
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Test charge from react app'
+    }, function (err, charge) {
+        if (err) return res.sendStatus(500)
+        return res.sendStatus(200);
+    });
 });
 
 

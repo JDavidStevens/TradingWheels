@@ -19,6 +19,7 @@ class Login extends Component {
     }
 
     this.login=this.login.bind(this);
+    this.guestLogin=this.guestLogin.bind(this);
   }
 
 
@@ -34,6 +35,12 @@ class Login extends Component {
     let uri = `${encodeURIComponent(window.location.origin)}/auth/callback`
     
     window.location=`https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${uri}&response_type=code`
+  }
+
+  guestLogin(){
+    axios.post(`/api/guest/login`,{sub:'Guest',email:'Guest',name: 'Guest'}).then(response=>{
+      this.props.history.push('/list')
+    })
   }
 
   render() {
@@ -104,9 +111,13 @@ class Login extends Component {
         
         <div>
           <button className="login-button" onClick={this.login}>Login/Register</button>
+          <br/>
+          <button className="login-button" onClick={this.guestLogin}>Guest Entrance</button>
         </div>
         <footer className="login-footer">
-          Data provided for free by <a href="https://iextrading.com/developer">IEX</a><br/>  View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>
+          Data provided for free by <a href="https://iextrading.com/developer">IEX</a><br/>  View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a> 
+          <br/>
+          Not a member of NYSE/FINRA. This site is for educational/practice purposes only. Actual stock trades cannot be placed through this site.
         </footer>
         </div>
       </div>
