@@ -50,7 +50,7 @@ app.delete('/api/cancel/:id', stockCtrl.cancelOrder)
 //////////auth endpoints//////////
 app.get('/auth/callback', authCtrl.authCallBack)
 app.post('/api/auth/logout', authCtrl.logout)
-app.post(`/api/guest/login`,authCtrl.guest)
+app.post(`/api/auth/guest`,authCtrl.guest)
 
 //////////session endpoint///////
 app.get('/api/user-data', (req, res) => {

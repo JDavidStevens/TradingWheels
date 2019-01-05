@@ -38,9 +38,8 @@ class Login extends Component {
   }
 
   guestLogin(){
-    axios.post(`/api/guest/login`,{sub:'Guest',email:'Guest',name: 'Guest'}).then(response=>{
-      this.props.history.push('/list')
-    })
+    axios.post(`/api/auth/guest`,{sub:'Guest',email:'Guest',name: 'Guest'})
+    .then(response=>{this.props.history.push('/list')})
   }
 
   render() {

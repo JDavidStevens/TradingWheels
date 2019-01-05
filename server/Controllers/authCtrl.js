@@ -44,6 +44,6 @@ guest: async(req,res)=>{
 
     logout: (req,res)=>{
         req.session.destroy();
-        res.redirect('/#/')
+        // res.redirect('/#/')
     }
 }
