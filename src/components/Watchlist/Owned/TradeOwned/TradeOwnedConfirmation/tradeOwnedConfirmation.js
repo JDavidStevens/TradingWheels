@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import StripeCheckout from 'react-stripe-checkout';
+// import StripeCheckout from 'react-stripe-checkout';
 import './tradeownedconfirmation.css';
 // import stripe from '../../../Nonowned/TradeNonOwned/TradeNonOwnedConfirmation/stripekey';
 
