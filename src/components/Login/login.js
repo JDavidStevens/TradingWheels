@@ -110,8 +110,8 @@ class Login extends Component {
         
         <div>
           <button className="login-button" onClick={this.login}>Login/Register</button>
-          <br/>
-          <button className="login-button" onClick={this.guestLogin}>Guest Entrance</button>
+          {/* <br/>
+          <button className="login-button" onClick={this.guestLogin}>Guest Entrance</button> */}
         </div>
         <footer className="login-footer">
           Data provided for free by <a href="https://iextrading.com/developer">IEX</a><br/>  View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a> 
